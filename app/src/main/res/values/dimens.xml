@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="question_text_size">54sp</dimen>
+    <dimen name="question_text_size">28sp</dimen>
     <dimen name="question_padding_vertical">8dp</dimen>
-    <dimen name="radio_button_padding_small">8dp</dimen>
+
     <dimen name="uniform_left_margin_answer_selections">54dp</dimen>
-    <dimen name="radio_button_text_size">40sp</dimen>
+    <dimen name="radio_button_padding_small">8dp</dimen>
+    <dimen name="radio_button_text_size">16sp</dimen>
+
     <dimen name="progress_bar_padding">12dp</dimen>
     <dimen name="progress_bar_side_extra_padding">6dp</dimen>
-    <dimen name="submit_answer_text_size">46</dimen>
+
+    <dimen name="submit_answer_text_size">22sp</dimen>
     <dimen name="submit_answer_padding_sides">12dp</dimen>
+
+    <dimen name="photo_padding_top">16dp</dimen>
 </resources>

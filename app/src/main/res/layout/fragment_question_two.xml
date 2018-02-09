@@ -2,7 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/firefly_cast">
-
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF">
+    <ImageView
+        android:paddingTop="@dimen/photo_padding_top"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ship_shape"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/question_two_text"
+        style="@style/QuestionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="What is the ship classification of the Serenity?"
+        />
+    <EditText
+        android:id="@+id/question_two_answerEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/question_padding_vertical"
+        android:layout_marginLeft="@dimen/uniform_left_margin_answer_selections"
+        android:layout_marginRight="@dimen/uniform_left_margin_answer_selections"
+        android:hint="Enter your answer here.."/>
+    <Button
+        android:id="@+id/submit_answer_question_two"
+        android:onClick="onClickSubmitQuestionTwo"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/submit_answer_padding_sides"
+        android:textAllCaps="false"
+        android:text="Submit answer"
+        android:textSize="@dimen/submit_answer_text_size"/>
 </LinearLayout>

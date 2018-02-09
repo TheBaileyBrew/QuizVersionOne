@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/voluta_script"
-        android:text="Click  to  Start"
+        android:text="Click to Start Quiz"
         android:textSize="120sp"
         android:textColor="#FFFFFF"
         android:paddingBottom="36dp"
