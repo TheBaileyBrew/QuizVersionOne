@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="800dp"
+    android:background="#FFFFFF">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="425dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/firefly_crew"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/question_one_text"
+        style="@style/QuestionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Who is the captain of the Serenity?"
+        />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/uniform_left_margin_answer_selections">
+        <RadioButton
+            android:id="@+id/question_one_a1"
+            style="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Malcolm Reynolds"/>
+        <RadioButton
+            android:id="@+id/question_one_a2"
+            style="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="River Tam"/>
+        <RadioButton
+            android:id="@+id/question_one_a3"
+            style="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jayne Cobb"/>
+        <RadioButton
+            android:id="@+id/question_one_a4"
+            style="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zoe Washburne"/>
+    </RadioGroup>
+    <Button
+        android:id="@+id/submit_answer_question_one"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/submit_answer_padding_sides"
+        android:fontFamily="@font/voluta_script"
+        android:textAllCaps="false"
+        android:text="Submit answer"
+        android:textSize="@dimen/submit_answer_text_size"/>
+</LinearLayout>

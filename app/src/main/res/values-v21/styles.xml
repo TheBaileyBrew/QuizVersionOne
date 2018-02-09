@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomProgressBarDesign" parent="@style/Base.Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:backgroundTint">#8000B2FF</item>
+    </style>
+</resources>
