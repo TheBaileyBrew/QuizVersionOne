@@ -8,9 +8,39 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="800dp"
+        android:layout_height="0dp"
         android:layout_weight="9">
     </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/current_score_padding_uniform"
+        android:layout_marginRight="@dimen/current_score_padding_uniform">
+        <TextView
+            style="@style/StandardTextBoxDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CURRENT SCORE:"/>
+        <TextView
+            android:id="@+id/currentScoreDisplay"
+            style="@style/StandardTextBoxDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"/>
+        <TextView
+            style="@style/StandardTextBoxDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/    15"/>
+        <Button
+            android:id="@+id/submitScoreToSocialMedia"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT SCORE"/>
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -21,6 +51,6 @@
         android:padding="@dimen/progress_bar_padding"
         android:indeterminate="false"
         android:layout_margin="16dp"
-        android:progress="20"
+        android:progress="100"
         />
 </LinearLayout>

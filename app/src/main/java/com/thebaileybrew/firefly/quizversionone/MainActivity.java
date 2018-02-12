@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickDisplayFrontScreenMenu(View view) {
         ImageView backgroundMainImage = findViewById(R.id.firefly_main_header_background);
-        AlphaAnimation animateBackground = new AlphaAnimation(1.0f, 0.1f);
-        animateBackground.setDuration(1000);
+        AlphaAnimation animateBackground = new AlphaAnimation(1.0f, 0.2f);
+        animateBackground.setDuration(2000);
         animateBackground.setRepeatCount(0);
         backgroundMainImage.startAnimation(animateBackground);
 
