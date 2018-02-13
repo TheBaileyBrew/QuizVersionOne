@@ -7,7 +7,7 @@
     <ImageView
         android:paddingTop="@dimen/photo_padding_top"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="300dp"
         android:scaleType="fitCenter"
         android:src="@drawable/ship_shape"
         android:layout_gravity="center_horizontal"/>
@@ -19,12 +19,11 @@
         android:text="What is the ship classification of the Serenity?"
         />
     <EditText
+        style="@style/EditTextFormatting"
         android:id="@+id/question_two_answerEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/question_padding_vertical"
-        android:layout_marginLeft="@dimen/uniform_left_margin_answer_selections"
-        android:layout_marginRight="@dimen/uniform_left_margin_answer_selections"
+
         android:hint="Enter your answer here.."/>
     <Button
         android:id="@+id/submit_answer_question_two"

@@ -20,6 +20,9 @@
         <item name="android:paddingLeft">@dimen/radio_button_padding_small</item>
         <item name="android:textSize">@dimen/radio_button_text_size</item>
         <item name="android:textColor">#222222</item>
+        <item name="android:colorControlNormal">@color/darkBlack</item>
+        <item name="android:colorControlActivated">@color/darkBlack</item>
+        <item name="android:colorControlHighlight">@color/colorAccent</item>
     </style>
 
     <style name="StandardTextBoxDisplay">
@@ -29,6 +32,25 @@
         <item name="android:textColor">#111111</item>
     </style>
 
+    <style name="EditTextFormatting">
+        <item name="android:maxLines">1</item>
+        <item name="android:minLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_marginTop">@dimen/question_padding_vertical</item>
+        <item name="android:layout_marginLeft">@dimen/uniform_left_margin_answer_selections</item>
+        <item name="android:layout_marginRight">@dimen/uniform_left_margin_answer_selections</item>
+    </style>
+
+    <style name="SwitchCustomStyle">
+        <item name="android:paddingLeft">@dimen/toggle_switch_padding</item>
+        <item name="android:paddingRight">@dimen/toggle_switch_padding</item>
+        <item name="android:textSize">@dimen/toggle_switch_text_size</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:colorControlActivated">@color/colorAccent</item>
+        <item name="android:colorControlNormal">@color/darkBlack</item>
+        <item name="android:colorControlHighlight">@color/darkBlack</item>
+    </style>
 
 
 </resources>

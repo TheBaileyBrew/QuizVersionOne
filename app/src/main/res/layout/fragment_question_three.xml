@@ -2,7 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/firefly_crew">
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF">
+    <ImageView
+        android:paddingTop="@dimen/photo_padding_top"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/firefly_one"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/question_two_text"
+        style="@style/QuestionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Which of the following are names of Jayne's guns?"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/current_score_text_size"
+        android:textColor="#dddddd"
+        android:text="Hint: Choose Two"/>
+
+        <Switch
+            style="@style/SwitchCustomStyle"
+            android:text="LUX"/>
+        <Switch
+            style="@style/SwitchCustomStyle"
+            android:text="LUCILLE"/>
+        <Switch
+            style="@style/SwitchCustomStyle"
+            android:text="VERA"/>
+        <Switch
+            style="@style/SwitchCustomStyle"
+            android:text="ADRIANA"/>
+
+
 
 </LinearLayout>

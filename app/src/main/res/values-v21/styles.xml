@@ -4,4 +4,13 @@
     <style name="CustomProgressBarDesign" parent="@style/Base.Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:backgroundTint">#8000B2FF</item>
     </style>
+
+    <style name="RadioButtonSelectionOptions">
+        <item name="android:paddingLeft">@dimen/radio_button_padding_small</item>
+        <item name="android:textSize">@dimen/radio_button_text_size</item>
+        <item name="android:textColor">#222222</item>
+        <item name="android:colorControlNormal">@color/colorAccent</item>
+        <item name="android:colorControlActivated">@color/darkBlack</item>
+        <item name="android:colorControlHighlight">@color/colorAccent</item>
+    </style>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="question_text_size">28sp</dimen>
+    <dimen name="question_text_size">24sp</dimen>
     <dimen name="question_padding_vertical">8dp</dimen>
 
     <dimen name="uniform_left_margin_answer_selections">54dp</dimen>
@@ -17,4 +17,6 @@
 
     <dimen name="current_score_padding_uniform">24dp</dimen>
     <dimen name="current_score_text_size">18sp</dimen>
+    <dimen name="toggle_switch_padding">8dp</dimen>
+    <dimen name="toggle_switch_text_size">24sp</dimen>
 </resources>

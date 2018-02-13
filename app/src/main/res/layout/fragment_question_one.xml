@@ -7,7 +7,7 @@
     <ImageView
         android:paddingTop="@dimen/photo_padding_top"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="300dp"
         android:scaleType="fitCenter"
         android:src="@drawable/firefly_crew"
         android:layout_gravity="center_horizontal"/>
@@ -25,25 +25,25 @@
         android:layout_marginLeft="@dimen/uniform_left_margin_answer_selections">
         <RadioButton
             android:id="@+id/question_one_a1"
-            style="@style/RadioButtonSelectionOptions"
+            android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Malcolm Reynolds"/>
         <RadioButton
             android:id="@+id/question_one_a2"
-            style="@style/RadioButtonSelectionOptions"
+            android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="River Tam"/>
         <RadioButton
             android:id="@+id/question_one_a3"
-            style="@style/RadioButtonSelectionOptions"
+            android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Jayne Cobb"/>
         <RadioButton
             android:id="@+id/question_one_a4"
-            style="@style/RadioButtonSelectionOptions"
+            android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Zoe Washburne"/>
@@ -57,6 +57,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/submit_answer_padding_sides"
         android:textAllCaps="false"
-        android:text="Submit answer"
+        android:text="Submit Answer"
         android:textSize="@dimen/submit_answer_text_size"/>
 </LinearLayout>
