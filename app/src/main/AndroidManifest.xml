@@ -19,9 +19,6 @@
 
         <activity android:name=".StartQuizActivity">
         </activity>
-
-        <activity android:name=".ViewPagerFragmentActivity">
-        </activity>
     </application>
 
 </manifest>

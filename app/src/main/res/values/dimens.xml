@@ -3,6 +3,9 @@
     <dimen name="question_text_size">24sp</dimen>
     <dimen name="question_padding_vertical">8dp</dimen>
 
+    <dimen name="extracredit_text_size">14sp</dimen>
+    <dimen name="extracredit_padding_vertical">6dp</dimen>
+
     <dimen name="uniform_left_margin_answer_selections">54dp</dimen>
     <dimen name="radio_button_padding_small">8dp</dimen>
     <dimen name="radio_button_text_size">16sp</dimen>
@@ -12,11 +15,12 @@
 
     <dimen name="submit_answer_text_size">22sp</dimen>
     <dimen name="submit_answer_padding_sides">12dp</dimen>
+    <dimen name="submit_answer_half_padding_sides">6dp</dimen>
 
     <dimen name="photo_padding_top">16dp</dimen>
 
     <dimen name="current_score_padding_uniform">24dp</dimen>
     <dimen name="current_score_text_size">18sp</dimen>
     <dimen name="toggle_switch_padding">8dp</dimen>
-    <dimen name="toggle_switch_text_size">24sp</dimen>
+    <dimen name="toggle_switch_text_size">16sp</dimen>
 </resources>

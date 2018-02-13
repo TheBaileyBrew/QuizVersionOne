@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,33 +13,103 @@
         android:src="@drawable/firefly_one"
         android:layout_gravity="center_horizontal"/>
     <TextView
-        android:id="@+id/question_two_text"
+        android:id="@+id/question_three_text"
         style="@style/QuestionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Which of the following are names of Jayne's guns?"
         />
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/question_three_linear_switch_display"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textSize="@dimen/current_score_text_size"
-        android:textColor="#dddddd"
-        android:text="Hint: Choose Two"/>
-
-        <Switch
-            style="@style/SwitchCustomStyle"
-            android:text="LUX"/>
-        <Switch
-            style="@style/SwitchCustomStyle"
-            android:text="LUCILLE"/>
-        <Switch
-            style="@style/SwitchCustomStyle"
-            android:text="VERA"/>
-        <Switch
-            style="@style/SwitchCustomStyle"
-            android:text="ADRIANA"/>
-
-
+        android:layout_marginTop="@dimen/question_padding_vertical"
+        android:layout_marginBottom="@dimen/question_padding_vertical">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="right"
+            android:layout_marginLeft="@dimen/submit_answer_padding_sides"
+            android:layout_marginRight="@dimen/submit_answer_half_padding_sides"
+            android:layout_weight="1">
+            <Switch
+                android:id="@+id/question_three_a1"
+                style="@style/SwitchCustomStyle"
+                android:text="LUX   "
+                android:onClick="onClickSubmitQuestionThree"/>
+            <Switch
+                android:id="@+id/question_three_a2"
+                style="@style/SwitchCustomStyle"
+                android:text="LUCILLE   "
+                android:onClick="onClickSubmitQuestionThree"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="left"
+            android:layout_marginLeft="@dimen/submit_answer_half_padding_sides"
+            android:layout_marginRight="@dimen/submit_answer_padding_sides"
+            android:layout_weight="1">
+            <Switch
+                android:id="@+id/question_three_a3"
+                android:layoutDirection="rtl"
+                style="@style/SwitchCustomStyle"
+                android:text="   VIVIAN"
+                android:onClick="onClickSubmitQuestionThree"/>
+            <Switch
+                android:id="@+id/question_three_a4"
+                android:layoutDirection="rtl"
+                style="@style/SwitchCustomStyle"
+                android:text="   VERA"
+                android:onClick="onClickSubmitQuestionThree"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/question_three_extra_credit"
+        style="@style/QuestionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Extra Credit:"/>
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/question_three_extra_credit_text"
+        style="@style/ExtraCreditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vera is Jayne's favorite gun, but what fictional Clint Eastwood character is the model named after?"/>
+    <RadioGroup
+        android:visibility="gone"
+        android:id="@+id/questionThreeExtraCreditRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/uniform_left_margin_answer_selections">
+        <RadioButton
+            android:id="@+id/question_threeEC_a1"
+            android:theme="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Walt Kowalski"/>
+        <RadioButton
+            android:id="@+id/question_threeEC_a2"
+            android:theme="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dirty Harry"/>
+        <RadioButton
+            android:id="@+id/question_threeEC_a3"
+            android:theme="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Robert Kincaid"/>
+        <RadioButton
+            android:id="@+id/question_threeEC_a4"
+            android:theme="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="William Munny"/>
+    </RadioGroup>
 
 </LinearLayout>
