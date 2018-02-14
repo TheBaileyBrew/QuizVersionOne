@@ -33,16 +33,24 @@
             android:layout_marginLeft="@dimen/submit_answer_padding_sides"
             android:layout_marginRight="@dimen/submit_answer_half_padding_sides"
             android:layout_weight="1">
-            <android.support.v7.widget.SwitchCompat
-                android:id="@+id/question_three_a1"
-                style="@style/SwitchCustomStyle"
-                android:text="LUX   "
-                android:onClick="onClickSubmitQuestionThree"/>
-            <android.support.v7.widget.SwitchCompat
-                android:id="@+id/question_three_a2"
-                style="@style/SwitchCustomStyle"
-                android:text="LUCILLE   "
-                android:onClick="onClickSubmitQuestionThree"/>
+            <CheckedTextView
+                android:id="@+id/question_three_optionA"
+                android:onClick="onClickInitiateCheckedTextView"
+                style="@style/CheckedTextViewFormatting"
+                android:text="LUX"
+                android:tag="1.25"/>
+            <CheckedTextView
+                android:id="@+id/question_three_optionB"
+                android:onClick="onClickInitiateCheckedTextView"
+                style="@style/CheckedTextViewFormatting"
+                android:text="SELINA"
+                android:tag="1.00"/>
+            <CheckedTextView
+                android:id="@+id/question_three_optionC"
+                android:onClick="onClickInitiateCheckedTextView"
+                style="@style/CheckedTextViewFormatting"
+                android:text="ANNA"
+                android:tag="1.00"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -52,20 +60,37 @@
             android:layout_marginLeft="@dimen/submit_answer_half_padding_sides"
             android:layout_marginRight="@dimen/submit_answer_padding_sides"
             android:layout_weight="1">
-            <android.support.v7.widget.SwitchCompat
-                android:id="@+id/question_three_a3"
-                android:layoutDirection="rtl"
-                style="@style/SwitchCustomStyle"
-                android:text="   VIVIAN"
-                android:onClick="onClickSubmitQuestionThree"/>
-            <android.support.v7.widget.SwitchCompat
-                android:id="@+id/question_three_a4"
-                android:layoutDirection="rtl"
-                style="@style/SwitchCustomStyle"
-                android:text="   VERA"
-                android:onClick="onClickSubmitQuestionThree"/>
+            <CheckedTextView
+                android:id="@+id/question_three_optionD"
+                android:onClick="onClickInitiateCheckedTextView"
+                style="@style/CheckedTextViewFormatting"
+                android:text="SOPHIA"
+                android:tag="1.00"/>
+            <CheckedTextView
+                android:id="@+id/question_three_optionE"
+                android:onClick="onClickInitiateCheckedTextView"
+                style="@style/CheckedTextViewFormatting"
+                android:text="VERA"
+                android:tag="1.25"/>
+            <CheckedTextView
+                android:id="@+id/question_three_optionF"
+                android:onClick="onClickInitiateCheckedTextView"
+                style="@style/CheckedTextViewFormatting"
+                android:text="LUCY"
+                android:tag="1.00"/>
         </LinearLayout>
     </LinearLayout>
+    <Button
+        android:id="@+id/submit_answer_question_three"
+        android:onClick="onClickSubmitQuestionThree"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/submit_answer_padding_sides"
+        android:textAllCaps="false"
+        android:text="Submit answer"
+        android:textSize="@dimen/submit_answer_text_size"/>
     <TextView
         android:visibility="gone"
         android:id="@+id/question_three_extra_credit"

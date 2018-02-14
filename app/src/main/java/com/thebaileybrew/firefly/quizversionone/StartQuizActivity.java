@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -55,12 +56,14 @@ public class StartQuizActivity extends FragmentActivity {
     EditText editTextQuestionTwo;
 
     //Question Three Display Views
-    SwitchCompat questionThreeAnswerOne;
-    SwitchCompat questionThreeAnswerTwo;
-    SwitchCompat questionThreeAnswerThree;
-    SwitchCompat questionThreeAnswerFour;
     TextView questionThreeTextView;
     LinearLayout questionThreeLinear;
+    CheckedTextView questionThreeOptionA;
+    CheckedTextView questionThreeOptionB;
+    CheckedTextView questionThreeOptionC;
+    CheckedTextView questionThreeOptionD;
+    CheckedTextView questionThreeOptionE;
+    CheckedTextView questionThreeOptionF;
     TextView questionThreeExtraCredit;
     TextView questionThreeECTextView;
     RadioGroup questionThreeRadioGroup;
@@ -78,16 +81,6 @@ public class StartQuizActivity extends FragmentActivity {
 
         this.initializePaging();
 
-        ViewPager pager = (ViewPager)super.findViewById(R.id.viewPager);
-        if (pager.getCurrentItem() == 2) {
-            //Creates the onClickListener for Question Three only if Fragment Three is currently active
-            questionThreeAnswerOne = findViewById(R.id.question_three_a1);
-            questionThreeAnswerTwo = findViewById(R.id.question_three_a2);
-            questionThreeAnswerThree = findViewById(R.id.question_three_a3);
-            questionThreeAnswerFour = findViewById(R.id.question_three_a4);
-
-        }
-
     }
 
 
@@ -103,13 +96,6 @@ public class StartQuizActivity extends FragmentActivity {
         pager.setAdapter(this.mPagerAdapter);
     }
 
-
-
-
-
-
-
-
     @Override
     public void onBackPressed() {
         final ViewPager pager = (ViewPager)super.findViewById(R.id.viewPager);
@@ -122,7 +108,6 @@ public class StartQuizActivity extends FragmentActivity {
             pager.setCurrentItem(pager.getCurrentItem() - 1);
         }
     }
-
 
     public class ProgressBarAnimation extends Animation {
         private ProgressBar progressBar;
@@ -200,7 +185,6 @@ public class StartQuizActivity extends FragmentActivity {
 
     }
 
-
     public void onClickSubmitQuestionTwo (View view) {
         editTextQuestionTwo = findViewById(R.id.question_two_answerEditText);
         String questionTwoAnswer = editTextQuestionTwo.getText().toString();
@@ -276,62 +260,126 @@ public class StartQuizActivity extends FragmentActivity {
         }, 3000);
     }
 
-    public void onClickSubmitQuestionThree (View view) {
-        questionThreeAnswerOne = findViewById(R.id.question_three_a1);
-        questionThreeAnswerTwo = findViewById(R.id.question_three_a2);
-        questionThreeAnswerThree = findViewById(R.id.question_three_a3);
-        questionThreeAnswerFour = findViewById(R.id.question_three_a4);
-
-        SwitchCompat.OnCheckedChangeListener switchListenerQuestionThree = new CompoundButton.OnCheckedChangeListener() {
+    public void onClickInitiateCheckedTextView (View view) {
+        questionThreeOptionA = findViewById(R.id.question_three_optionA);
+        questionThreeOptionB = findViewById(R.id.question_three_optionB);
+        questionThreeOptionC = findViewById(R.id.question_three_optionC);
+        questionThreeOptionD = findViewById(R.id.question_three_optionD);
+        questionThreeOptionE = findViewById(R.id.question_three_optionE);
+        questionThreeOptionF = findViewById(R.id.question_three_optionF);
+        questionThreeOptionA.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
-                switch (compoundButton.getId()) {
-                    case R.id.question_three_a1:
-                        Toast.makeText(getApplicationContext(), "Correct Lux is one of Jayne's guns", Toast.LENGTH_LONG).show();
-                        currentScore += 5;
-                        questionThreeAnswerOne.setClickable(false);
-                        break;
-                    case R.id.question_three_a2:
-                        Toast.makeText(getApplicationContext(), "Incorrect Lucille is not one of Jayne's guns", Toast.LENGTH_LONG).show();
-                        currentScore -= 5;
-                        questionThreeAnswerTwo.setClickable(false);
-                        break;
-                    case R.id.question_three_a3:
-                        Toast.makeText(getApplicationContext(), "Correct Vera is one of Jayne's guns", Toast.LENGTH_LONG).show();
-                        currentScore += 5;
-                        questionThreeAnswerThree.setClickable(false);
-                        break;
-                    case R.id.question_three_a4:
-                        Toast.makeText(getApplicationContext(), "Incorrect Adriana is not one of Jayne's guns", Toast.LENGTH_LONG).show();
-                        currentScore -= 5;
-                        questionThreeAnswerFour.setClickable(false);
-                        break;
+            public void onClick(View view) {
+                if (questionThreeOptionA.isChecked()) {
+                    //Sets the drawable Checkmark
+                    questionThreeOptionA.setCheckMarkDrawable(0);
+                    questionThreeOptionA.setChecked(false);
+                    Log.i(String.valueOf(questionThreeOptionA.isChecked()), "Option is:");
+                } else {
+                    questionThreeOptionA.setCheckMarkDrawable(R.drawable.checked);
+                    questionThreeOptionA.setChecked(true);
+                    Log.i(String.valueOf(questionThreeOptionA.isChecked()), "Option is:");
                 }
-
             }
+        });
+        questionThreeOptionB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (questionThreeOptionB.isChecked()) {
+                    //Sets the drawable Checkmark
+                    questionThreeOptionB.setCheckMarkDrawable(0);
+                    questionThreeOptionB.setChecked(false);
+                    Log.i(String.valueOf(questionThreeOptionB.isChecked()), "Option is:");
+                } else {
+                    questionThreeOptionB.setCheckMarkDrawable(R.drawable.checked);
+                    questionThreeOptionB.setChecked(true);
+                    Log.i(String.valueOf(questionThreeOptionB.isChecked()), "Option is:");
+                }
+            }
+        });
+        questionThreeOptionC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (questionThreeOptionC.isChecked()) {
+                    //Sets the drawable Checkmark
+                    questionThreeOptionC.setCheckMarkDrawable(0);
+                    questionThreeOptionC.setChecked(false);
+                } else {
+                    questionThreeOptionC.setCheckMarkDrawable(R.drawable.checked);
+                    questionThreeOptionC.setChecked(true);
+                }
+            }
+        });
+        questionThreeOptionD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (questionThreeOptionD.isChecked()) {
+                    //Sets the drawable Checkmark
+                    questionThreeOptionD.setCheckMarkDrawable(0);
+                    questionThreeOptionD.setChecked(false);
+                } else {
+                    questionThreeOptionD.setCheckMarkDrawable(R.drawable.checked);
+                    questionThreeOptionD.setChecked(true);
+                }
+            }
+        });
+        questionThreeOptionE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (questionThreeOptionE.isChecked()) {
+                    //Sets the drawable Checkmark
+                    questionThreeOptionE.setCheckMarkDrawable(0);
+                    questionThreeOptionE.setChecked(false);
+                } else {
+                    questionThreeOptionE.setCheckMarkDrawable(R.drawable.checked);
+                    questionThreeOptionE.setChecked(true);
+                }
+            }
+        });
+        questionThreeOptionF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (questionThreeOptionF.isChecked()) {
+                    //Sets the drawable Checkmark
+                    questionThreeOptionF.setCheckMarkDrawable(0);
+                    questionThreeOptionF.setChecked(false);
+                } else {
+                    questionThreeOptionF.setCheckMarkDrawable(R.drawable.checked);
+                    questionThreeOptionF.setChecked(true);
+                }
+            }
+        });
+    }
 
-        };
-        questionThreeAnswerOne.setOnCheckedChangeListener(switchListenerQuestionThree);
-        questionThreeAnswerTwo.setOnCheckedChangeListener(switchListenerQuestionThree);
-        questionThreeAnswerThree.setOnCheckedChangeListener(switchListenerQuestionThree);
-        questionThreeAnswerFour.setOnCheckedChangeListener(switchListenerQuestionThree);
-
-
-
-        if (questionThreeAnswerOne.isChecked() && questionThreeAnswerFour.isChecked()) {
-            Toast.makeText(getApplicationContext(), "Correct Lux and Vera are Jayne's guns.", Toast.LENGTH_LONG).show();
-            questionThreeTextView = findViewById(R.id.question_three_text);
-            questionThreeTextView.setVisibility(GONE);
-            questionThreeLinear = findViewById(R.id.question_three_linear_switch_display);
-            questionThreeLinear.setVisibility(GONE);
-            questionThreeExtraCredit = findViewById(R.id.question_three_extra_credit);
-            questionThreeExtraCredit.setVisibility(View.VISIBLE);
-            questionThreeECTextView = findViewById(R.id.question_three_extra_credit_text);
-            questionThreeECTextView.setVisibility(View.VISIBLE);
-            questionThreeRadioGroup = findViewById(R.id.questionThreeExtraCreditRadioGroup);
-            questionThreeRadioGroup.setVisibility(View.VISIBLE);
+    public void onClickSubmitQuestionThree (View view) {
+        Boolean A = questionThreeOptionA.isChecked();
+        Boolean B = questionThreeOptionB.isChecked();
+        Boolean C = questionThreeOptionC.isChecked();
+        Boolean D = questionThreeOptionD.isChecked();
+        Boolean E = questionThreeOptionE.isChecked();
+        Boolean F = questionThreeOptionF.isChecked();
+        if (B || C || E || F) {
+            // Incorrect Response Submitted
+            Toast.makeText(this, "You've submitted wrong answers", Toast.LENGTH_SHORT).show();
+        } else if (A && D) {
+            //Both Correct Submitted
+            Toast.makeText(this, "You've chosen correctly", Toast.LENGTH_SHORT).show();
+        } else if (A || D) {
+            //One Correct Submitted
+            Toast.makeText(this, "You've chosen one correctly", Toast.LENGTH_SHORT).show();
         }
+
+        questionThreeTextView = findViewById(R.id.question_three_text);
+        questionThreeTextView.setVisibility(GONE);
+        questionThreeLinear = findViewById(R.id.question_three_linear_switch_display);
+        questionThreeLinear.setVisibility(GONE);
+        questionThreeExtraCredit = findViewById(R.id.question_three_extra_credit);
+        questionThreeExtraCredit.setVisibility(View.VISIBLE);
+        questionThreeECTextView = findViewById(R.id.question_three_extra_credit_text);
+        questionThreeECTextView.setVisibility(View.VISIBLE);
+        questionThreeRadioGroup = findViewById(R.id.questionThreeExtraCreditRadioGroup);
+        questionThreeRadioGroup.setVisibility(View.VISIBLE);
+
         //Update the Score Display
         displayCurrentScore(currentScore);
         //Animate the progress bar
@@ -339,8 +387,6 @@ public class StartQuizActivity extends FragmentActivity {
         ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, 1800, 2400);
         anim.setDuration(3000);
         questionProgress.startAnimation(anim);
-        //Validate that correct answers are chosen
-
 
     }
 
@@ -388,9 +434,6 @@ public class StartQuizActivity extends FragmentActivity {
             }
         }, 3000);
     }
-
-
-
 
 
     public void displayCurrentScore (int score) {
