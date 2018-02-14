@@ -33,12 +33,12 @@
             android:layout_marginLeft="@dimen/submit_answer_padding_sides"
             android:layout_marginRight="@dimen/submit_answer_half_padding_sides"
             android:layout_weight="1">
-            <Switch
+            <android.support.v7.widget.SwitchCompat
                 android:id="@+id/question_three_a1"
                 style="@style/SwitchCustomStyle"
                 android:text="LUX   "
                 android:onClick="onClickSubmitQuestionThree"/>
-            <Switch
+            <android.support.v7.widget.SwitchCompat
                 android:id="@+id/question_three_a2"
                 style="@style/SwitchCustomStyle"
                 android:text="LUCILLE   "
@@ -52,13 +52,13 @@
             android:layout_marginLeft="@dimen/submit_answer_half_padding_sides"
             android:layout_marginRight="@dimen/submit_answer_padding_sides"
             android:layout_weight="1">
-            <Switch
+            <android.support.v7.widget.SwitchCompat
                 android:id="@+id/question_three_a3"
                 android:layoutDirection="rtl"
                 style="@style/SwitchCustomStyle"
                 android:text="   VIVIAN"
                 android:onClick="onClickSubmitQuestionThree"/>
-            <Switch
+            <android.support.v7.widget.SwitchCompat
                 android:id="@+id/question_three_a4"
                 android:layoutDirection="rtl"
                 style="@style/SwitchCustomStyle"

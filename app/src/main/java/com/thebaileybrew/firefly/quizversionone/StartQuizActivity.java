@@ -55,10 +55,10 @@ public class StartQuizActivity extends FragmentActivity {
     EditText editTextQuestionTwo;
 
     //Question Three Display Views
-    Switch questionThreeAnswerOne;
-    Switch questionThreeAnswerTwo;
-    Switch questionThreeAnswerThree;
-    Switch questionThreeAnswerFour;
+    SwitchCompat questionThreeAnswerOne;
+    SwitchCompat questionThreeAnswerTwo;
+    SwitchCompat questionThreeAnswerThree;
+    SwitchCompat questionThreeAnswerFour;
     TextView questionThreeTextView;
     LinearLayout questionThreeLinear;
     TextView questionThreeExtraCredit;
@@ -86,11 +86,6 @@ public class StartQuizActivity extends FragmentActivity {
             questionThreeAnswerThree = findViewById(R.id.question_three_a3);
             questionThreeAnswerFour = findViewById(R.id.question_three_a4);
 
-
-            questionThreeAnswerOne.setOnCheckedChangeListener(switchListenerQuestionThree);
-            questionThreeAnswerTwo.setOnCheckedChangeListener(switchListenerQuestionThree);
-            questionThreeAnswerThree.setOnCheckedChangeListener(switchListenerQuestionThree);
-            questionThreeAnswerFour.setOnCheckedChangeListener(switchListenerQuestionThree);
         }
 
     }
@@ -282,7 +277,12 @@ public class StartQuizActivity extends FragmentActivity {
     }
 
     public void onClickSubmitQuestionThree (View view) {
-        CompoundButton.OnCheckedChangeListener switchListenerQuestionThree = new CompoundButton.OnCheckedChangeListener() {
+        questionThreeAnswerOne = findViewById(R.id.question_three_a1);
+        questionThreeAnswerTwo = findViewById(R.id.question_three_a2);
+        questionThreeAnswerThree = findViewById(R.id.question_three_a3);
+        questionThreeAnswerFour = findViewById(R.id.question_three_a4);
+
+        SwitchCompat.OnCheckedChangeListener switchListenerQuestionThree = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
@@ -290,25 +290,21 @@ public class StartQuizActivity extends FragmentActivity {
                     case R.id.question_three_a1:
                         Toast.makeText(getApplicationContext(), "Correct Lux is one of Jayne's guns", Toast.LENGTH_LONG).show();
                         currentScore += 5;
-                        displayCurrentScore(currentScore);
                         questionThreeAnswerOne.setClickable(false);
                         break;
                     case R.id.question_three_a2:
                         Toast.makeText(getApplicationContext(), "Incorrect Lucille is not one of Jayne's guns", Toast.LENGTH_LONG).show();
                         currentScore -= 5;
-                        displayCurrentScore(currentScore);
                         questionThreeAnswerTwo.setClickable(false);
                         break;
                     case R.id.question_three_a3:
                         Toast.makeText(getApplicationContext(), "Correct Vera is one of Jayne's guns", Toast.LENGTH_LONG).show();
                         currentScore += 5;
-                        displayCurrentScore(currentScore);
                         questionThreeAnswerThree.setClickable(false);
                         break;
                     case R.id.question_three_a4:
-                        Toast.makeText(getApplicationContext(), "Correct Adriana is not one of Jayne's guns", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Incorrect Adriana is not one of Jayne's guns", Toast.LENGTH_LONG).show();
                         currentScore -= 5;
-                        displayCurrentScore(currentScore);
                         questionThreeAnswerFour.setClickable(false);
                         break;
                 }
@@ -316,16 +312,13 @@ public class StartQuizActivity extends FragmentActivity {
             }
 
         };
+        questionThreeAnswerOne.setOnCheckedChangeListener(switchListenerQuestionThree);
+        questionThreeAnswerTwo.setOnCheckedChangeListener(switchListenerQuestionThree);
+        questionThreeAnswerThree.setOnCheckedChangeListener(switchListenerQuestionThree);
+        questionThreeAnswerFour.setOnCheckedChangeListener(switchListenerQuestionThree);
 
 
-        //Update the Score Display
-        displayCurrentScore(currentScore);
-        //Animate the progress bar
-        questionProgress = findViewById(R.id.progressBar);
-        ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, 1800, 2400);
-        anim.setDuration(3000);
-        questionProgress.startAnimation(anim);
-        //Validate that correct answers are chosen
+
         if (questionThreeAnswerOne.isChecked() && questionThreeAnswerFour.isChecked()) {
             Toast.makeText(getApplicationContext(), "Correct Lux and Vera are Jayne's guns.", Toast.LENGTH_LONG).show();
             questionThreeTextView = findViewById(R.id.question_three_text);
@@ -339,6 +332,15 @@ public class StartQuizActivity extends FragmentActivity {
             questionThreeRadioGroup = findViewById(R.id.questionThreeExtraCreditRadioGroup);
             questionThreeRadioGroup.setVisibility(View.VISIBLE);
         }
+        //Update the Score Display
+        displayCurrentScore(currentScore);
+        //Animate the progress bar
+        questionProgress = findViewById(R.id.progressBar);
+        ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, 1800, 2400);
+        anim.setDuration(3000);
+        questionProgress.startAnimation(anim);
+        //Validate that correct answers are chosen
+
 
     }
 
