@@ -3,6 +3,50 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/firefly_one">
+    android:background="#FFFFFF">
+        <VideoView
+            android:id="@+id/video_view_fragment_four"
+            android:layout_width="match_parent"
+            android:layout_height="350dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/start_fragment_four_video"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:onClick="onClickStartThemeVideo"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:text="Play"
+                    android:textColor="#CCCCCC"/>
+                <Button
+                    android:id="@+id/pause_fragment_four_video"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:onClick="onClickStartThemeVideo"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:text="Pause"
+                    android:textColor="#CCCCCC"/>
+                <Button
+                    android:id="@+id/stop_fragment_four_video"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:onClick="onClickStartThemeVideo"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:text="Stop"
+                    android:textColor="#CCCCCC"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/question_four_text"
+            style="@style/QuestionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What is the name of the show's theme song?"/>
 
 </LinearLayout>

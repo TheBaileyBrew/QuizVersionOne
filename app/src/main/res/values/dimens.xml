@@ -14,6 +14,7 @@
     <dimen name="progress_bar_side_extra_padding">6dp</dimen>
 
     <dimen name="submit_answer_text_size">22sp</dimen>
+    <dimen name="submit_answer_text_small_size">12sp</dimen>
     <dimen name="submit_answer_padding_sides">12dp</dimen>
     <dimen name="submit_answer_half_padding_sides">6dp</dimen>
 

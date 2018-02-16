@@ -22,9 +22,9 @@
     <LinearLayout
         android:id="@+id/question_three_linear_switch_display"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/question_padding_vertical"
-        android:layout_marginBottom="@dimen/question_padding_vertical">
+        android:layout_marginTop="@dimen/question_padding_vertical">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -35,22 +35,16 @@
             android:layout_weight="1">
             <CheckedTextView
                 android:id="@+id/question_three_optionA"
-                android:onClick="onClickInitiateCheckedTextView"
                 style="@style/CheckedTextViewFormatting"
-                android:text="LUX"
-                android:tag="1.25"/>
+                android:text="LUX"/>
             <CheckedTextView
                 android:id="@+id/question_three_optionB"
-                android:onClick="onClickInitiateCheckedTextView"
                 style="@style/CheckedTextViewFormatting"
-                android:text="SELINA"
-                android:tag="1.00"/>
+                android:text="SELINA"/>
             <CheckedTextView
                 android:id="@+id/question_three_optionC"
-                android:onClick="onClickInitiateCheckedTextView"
                 style="@style/CheckedTextViewFormatting"
-                android:text="ANNA"
-                android:tag="1.00"/>
+                android:text="ANNA"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -62,32 +56,42 @@
             android:layout_weight="1">
             <CheckedTextView
                 android:id="@+id/question_three_optionD"
-                android:onClick="onClickInitiateCheckedTextView"
                 style="@style/CheckedTextViewFormatting"
-                android:text="SOPHIA"
-                android:tag="1.00"/>
+                android:text="SOPHIA"/>
             <CheckedTextView
                 android:id="@+id/question_three_optionE"
-                android:onClick="onClickInitiateCheckedTextView"
                 style="@style/CheckedTextViewFormatting"
-                android:text="VERA"
-                android:tag="1.25"/>
+                android:text="VERA"/>
             <CheckedTextView
                 android:id="@+id/question_three_optionF"
-                android:onClick="onClickInitiateCheckedTextView"
                 style="@style/CheckedTextViewFormatting"
-                android:text="LUCY"
-                android:tag="1.00"/>
+                android:text="LUCY"/>
         </LinearLayout>
     </LinearLayout>
     <Button
-        android:id="@+id/submit_answer_question_three"
-        android:onClick="onClickSubmitQuestionThree"
+        android:id="@+id/question_three_show_checked_text_views"
+        android:onClick="onClickInitiateCheckedTextView"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/submit_answer_padding_sides"
+        android:layout_marginLeft="@dimen/submit_answer_padding_sides"
+        android:layout_marginRight="@dimen/submit_answer_padding_sides"
+        android:layout_marginTop="@dimen/submit_answer_padding_sides"
+        android:textAllCaps="false"
+        android:text="Show Options"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/submit_answer_text_small_size"/>
+    <Button
+        android:id="@+id/submit_answer_question_three"
+        android:onClick="onClickSubmitQuestionThree"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/submit_answer_padding_sides"
+        android:layout_marginRight="@dimen/submit_answer_padding_sides"
         android:textAllCaps="false"
         android:text="Submit answer"
         android:textSize="@dimen/submit_answer_text_size"/>
