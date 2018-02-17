@@ -64,6 +64,10 @@ public class StartQuizActivity extends FragmentActivity {
     int correctTextViews = 0;
     int selectedTextViews = 0;
 
+    //Define float values
+    float currentProgress;
+    float desiredProgress;
+
     //Define TextViews
     EditText editTextQuestionTwo;
     TextView questionThreeExtraCredit;
@@ -210,7 +214,9 @@ public class StartQuizActivity extends FragmentActivity {
         questionOneSubmit.setTextColor(getResources().getColor(R.color.grayFadeD));
 
         //Animate the Progress Bar
-        ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, 0, 600);
+        currentProgress = questionProgress.getProgress();
+        desiredProgress = currentProgress + 600;
+        ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, currentProgress, desiredProgress);
         anim.setDuration(3000);
         questionProgress.startAnimation(anim);
 
