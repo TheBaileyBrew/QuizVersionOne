@@ -42,29 +42,32 @@ import static android.view.View.VISIBLE;
  */
 
 public class StartQuizActivity extends FragmentActivity {
-
-    private android.support.v4.view.PagerAdapter mPagerAdapter;
-
-    int currentScore = 0;
+    //Define Buttons & Radio Groups
     Button questionOneSubmit;
     Button questionTwoSubmit;
     Button questionThreeSubmit;
     Button questionFourSubmit;
-    ProgressBar questionProgress;
-
-    //Question One Radio Buttons
+    Button submitChoicesQuestionThree;
+    Button showCheckedTextViewsQuestionThree;
     RadioGroup fragmentQuestionOne;
     RadioButton questionOneAnswerOne;
     RadioButton questionOneAnswerTwo;
     RadioButton questionOneAnswerThree;
     RadioButton questionOneAnswerFour;
+    RadioGroup questionThreeRadioGroup;
+    RadioGroup fragmentQuestionThree;
+    RadioButton questionThreeAnswerOneEC;
+    RadioButton questionThreeAnswerTwoEC;
+    RadioButton questionThreeAnswerThreeEC;
+    RadioButton questionThreeAnswerFourEC;
 
-    //Question Two Edit Text Field
+    //Define integer values
+    int currentScore = 0;
+    int correctTextViews = 0;
+    int selectedTextViews = 0;
+
+    //Define TextViews
     EditText editTextQuestionTwo;
-
-    //Question Three Display Views
-    TextView questionThreeTextView;
-    LinearLayout questionThreeLinear;
     CheckedTextView questionThreeOptionA;
     CheckedTextView questionThreeOptionB;
     CheckedTextView questionThreeOptionC;
@@ -72,15 +75,19 @@ public class StartQuizActivity extends FragmentActivity {
     CheckedTextView questionThreeOptionE;
     CheckedTextView questionThreeOptionF;
     TextView questionThreeExtraCredit;
+    TextView questionThreeTextView;
     TextView questionThreeECTextView;
-    RadioGroup questionThreeRadioGroup;
-    RadioGroup fragmentQuestionThree;
-    RadioButton questionThreeAnswerOneEC;
-    RadioButton questionThreeAnswerTwoEC;
-    RadioButton questionThreeAnswerThreeEC;
-    RadioButton questionThreeAnswerFourEC;
-    ViewPager pager;
 
+    //Define Layouts
+    LinearLayout questionThreeLinear;
+    LinearLayout linearLayoutQuestionThreeChoices;
+
+    //Miscelaneous Variable Definitions
+    private android.support.v4.view.PagerAdapter mPagerAdapter;
+    ViewPager pager;
+    ProgressBar questionProgress;
+
+    //Video Playing Question Four
     Button playVideo;
     MediaController myVideoController;
     VideoView questionFourVideoViewer;
@@ -88,18 +95,43 @@ public class StartQuizActivity extends FragmentActivity {
     Uri uriPath;
 
 
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_quiz_start);
+        //Find View By Definitions
         playVideo = findViewById(R.id.start_fragment_four_video);
         questionFourVideoViewer = findViewById(R.id.video_view_fragment_four);
+        fragmentQuestionOne = findViewById(R.id.questionOneRadioGroup);
+        questionOneAnswerOne = findViewById(R.id.question_one_a1);
+        questionOneAnswerTwo = findViewById(R.id.question_one_a2);
+        questionOneAnswerThree = findViewById(R.id.question_one_a3);
+        questionOneAnswerFour = findViewById(R.id.question_one_a4);
+        questionOneSubmit = findViewById(R.id.submit_answer_question_one);
+        questionProgress = findViewById(R.id.progressBar);
+        editTextQuestionTwo = findViewById(R.id.question_two_answerEditText);
+        questionTwoSubmit = findViewById(R.id.submit_answer_question_two);
+        questionThreeOptionA = findViewById(R.id.question_three_optionA);
+        questionThreeOptionB = findViewById(R.id.question_three_optionB);
+        questionThreeOptionC = findViewById(R.id.question_three_optionC);
+        questionThreeOptionD = findViewById(R.id.question_three_optionD);
+        questionThreeOptionE = findViewById(R.id.question_three_optionE);
+        questionThreeOptionF = findViewById(R.id.question_three_optionF);
+        linearLayoutQuestionThreeChoices = findViewById(R.id.question_three_linear_switch_display);
+        submitChoicesQuestionThree = findViewById(R.id.submit_answer_question_three);
+        showCheckedTextViewsQuestionThree = findViewById(R.id.question_three_show_checked_text_views);
+        questionThreeTextView = findViewById(R.id.question_three_text);
+        questionThreeExtraCredit = findViewById(R.id.question_three_extra_credit);
+        questionThreeECTextView = findViewById(R.id.question_three_extra_credit_text);
+        questionThreeRadioGroup = findViewById(R.id.questionThreeExtraCreditRadioGroup);
+
 
         this.initializePaging();
-
-        pager = (ViewPager)super.findViewById(R.id.viewPager);
-        if (pager.getCurrentItem() == 3) {
-        }
 
     }
 
@@ -154,12 +186,6 @@ public class StartQuizActivity extends FragmentActivity {
     }
 
     public void onClickSubmitQuestionOne(View view) {
-        fragmentQuestionOne = findViewById(R.id.questionOneRadioGroup);
-        questionOneAnswerOne = findViewById(R.id.question_one_a1);
-        questionOneAnswerTwo = findViewById(R.id.question_one_a2);
-        questionOneAnswerThree = findViewById(R.id.question_one_a3);
-        questionOneAnswerFour = findViewById(R.id.question_one_a4);
-
         //switch statement checks for radio id selection, based on id reference in the radio group
         switch (fragmentQuestionOne.getCheckedRadioButtonId()) {
             case R.id.question_one_a1:
@@ -187,24 +213,20 @@ public class StartQuizActivity extends FragmentActivity {
                 Toast.makeText(getApplicationContext(), "You made no selection.", Toast.LENGTH_LONG).show();
                 break;
         }
-
         //Update the Score Display
         displayCurrentScore(currentScore);
 
         //Fade the Submit Button
-        questionOneSubmit = findViewById(R.id.submit_answer_question_one);
         questionOneSubmit.setClickable(false);
         questionOneSubmit.setText("Answer Submitted");
         questionOneSubmit.setTextColor(getResources().getColor(R.color.grayFadeD));
 
         //Animate the Progress Bar
-        questionProgress = findViewById(R.id.progressBar);
         ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, 0, 600);
         anim.setDuration(3000);
         questionProgress.startAnimation(anim);
 
         //Auto-advance the Page Viewer
-        final ViewPager pager = (ViewPager)super.findViewById(R.id.viewPager);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -216,7 +238,6 @@ public class StartQuizActivity extends FragmentActivity {
     }
 
     public void onClickSubmitQuestionTwo (View view) {
-        editTextQuestionTwo = findViewById(R.id.question_two_answerEditText);
         String questionTwoAnswer = editTextQuestionTwo.getText().toString();
         Log.i(questionTwoAnswer, "User entered text is:");
         if (questionTwoAnswer.equals("")) {
@@ -270,17 +291,14 @@ public class StartQuizActivity extends FragmentActivity {
         //Update the Score Display
         displayCurrentScore(currentScore);
         //Fade the Submit Button
-        questionTwoSubmit = findViewById(R.id.submit_answer_question_two);
         questionTwoSubmit.setClickable(false);
         questionTwoSubmit.setText("Answer Submitted");
         questionTwoSubmit.setTextColor(getResources().getColor(R.color.grayFadeD));
         //Animate the progress bar
-        questionProgress = findViewById(R.id.progressBar);
         ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, 600, 1200);
         anim.setDuration(3000);
         questionProgress.startAnimation(anim);
         //Auto-advance the Page Viewer
-        final ViewPager pager = (ViewPager)super.findViewById(R.id.viewPager);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -291,16 +309,6 @@ public class StartQuizActivity extends FragmentActivity {
     }
 
     public void onClickInitiateCheckedTextView (View view) {
-        questionThreeOptionA = findViewById(R.id.question_three_optionA);
-        questionThreeOptionB = findViewById(R.id.question_three_optionB);
-        questionThreeOptionC = findViewById(R.id.question_three_optionC);
-        questionThreeOptionD = findViewById(R.id.question_three_optionD);
-        questionThreeOptionE = findViewById(R.id.question_three_optionE);
-        questionThreeOptionF = findViewById(R.id.question_three_optionF);
-        LinearLayout linearLayoutQuestionThreeChoices = findViewById(R.id.question_three_linear_switch_display);
-        Button submitChoicesQuestionThree = findViewById(R.id.submit_answer_question_three);
-        Button showCheckedTextViewsQuestionThree = findViewById(R.id.question_three_show_checked_text_views);
-
         if (showCheckedTextViewsQuestionThree.getText().toString() == "Show Options") {
             linearLayoutQuestionThreeChoices.setVisibility(VISIBLE);
             submitChoicesQuestionThree.setVisibility(VISIBLE);
@@ -310,7 +318,6 @@ public class StartQuizActivity extends FragmentActivity {
             submitChoicesQuestionThree.setVisibility(GONE);
             showCheckedTextViewsQuestionThree.setText("Show Options");
         }
-
         questionThreeOptionA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -396,8 +403,6 @@ public class StartQuizActivity extends FragmentActivity {
     }
 
     public void onClickSubmitQuestionThree (View view) {
-        int correctTextViews = 0;
-        int selectedTextViews = 0;
         Boolean A = questionThreeOptionA.isChecked();
         Boolean B = questionThreeOptionB.isChecked();
         Boolean C = questionThreeOptionC.isChecked();
@@ -469,7 +474,6 @@ public class StartQuizActivity extends FragmentActivity {
                 break;
         }
 
-
         if (correctTextViews == 2 && selectedTextViews == 2) {
             // Two correct answers plus zero incorrect
             Toast.makeText(this, "You've chosen correctly", Toast.LENGTH_SHORT).show();
@@ -493,15 +497,12 @@ public class StartQuizActivity extends FragmentActivity {
             Toast.makeText(this, "You've made no selection", Toast.LENGTH_SHORT).show();
         }
 
-        Button submitChoicesQuestionThree = findViewById(R.id.submit_answer_question_three);
         submitChoicesQuestionThree.setVisibility(GONE);
-        Button showCheckedTextViewsQuestionThree = findViewById(R.id.question_three_show_checked_text_views);
         showCheckedTextViewsQuestionThree.setVisibility(GONE);
 
         //Update the Score Display
         displayCurrentScore(currentScore);
         //Animate the progress bar
-        questionProgress = findViewById(R.id.progressBar);
         ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, 1800, 2400);
         anim.setDuration(3000);
         questionProgress.startAnimation(anim);
@@ -511,7 +512,6 @@ public class StartQuizActivity extends FragmentActivity {
         } else {
             //Advance to Fragment Four
             //Auto-advance the Page Viewer
-            final ViewPager pager = (ViewPager)super.findViewById(R.id.viewPager);
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -524,19 +524,14 @@ public class StartQuizActivity extends FragmentActivity {
     }
 
     public void advanceToExtraCredit (View view) {
-        Button submitChoicesQuestionThree = findViewById(R.id.submit_answer_question_three);
+        //Set Question to GONE
         submitChoicesQuestionThree.setVisibility(GONE);
-        Button showCheckedTextViewsQuestionThree = findViewById(R.id.question_three_show_checked_text_views);
         showCheckedTextViewsQuestionThree.setVisibility(GONE);
-        questionThreeTextView = findViewById(R.id.question_three_text);
         questionThreeTextView.setVisibility(GONE);
-        questionThreeLinear = findViewById(R.id.question_three_linear_switch_display);
         questionThreeLinear.setVisibility(GONE);
-        questionThreeExtraCredit = findViewById(R.id.question_three_extra_credit);
+        //Set Extra Credit to VISIBLE
         questionThreeExtraCredit.setVisibility(VISIBLE);
-        questionThreeECTextView = findViewById(R.id.question_three_extra_credit_text);
         questionThreeECTextView.setVisibility(VISIBLE);
-        questionThreeRadioGroup = findViewById(R.id.questionThreeExtraCreditRadioGroup);
         questionThreeRadioGroup.setVisibility(VISIBLE);
     }
 
@@ -578,7 +573,6 @@ public class StartQuizActivity extends FragmentActivity {
         }
 
         //Auto-advance the Page Viewer
-        final ViewPager pager = (ViewPager) super.findViewById(R.id.viewPager);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
