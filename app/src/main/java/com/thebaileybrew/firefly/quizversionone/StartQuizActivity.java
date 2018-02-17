@@ -30,10 +30,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
-
 import java.util.List;
 import java.util.Vector;
-
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
@@ -50,12 +48,12 @@ public class StartQuizActivity extends FragmentActivity {
     Button submitChoicesQuestionThree;
     Button showCheckedTextViewsQuestionThree;
     RadioGroup fragmentQuestionOne;
+    RadioGroup questionThreeRadioGroup;
+    RadioGroup fragmentQuestionThree;
     RadioButton questionOneAnswerOne;
     RadioButton questionOneAnswerTwo;
     RadioButton questionOneAnswerThree;
     RadioButton questionOneAnswerFour;
-    RadioGroup questionThreeRadioGroup;
-    RadioGroup fragmentQuestionThree;
     RadioButton questionThreeAnswerOneEC;
     RadioButton questionThreeAnswerTwoEC;
     RadioButton questionThreeAnswerThreeEC;
@@ -68,15 +66,15 @@ public class StartQuizActivity extends FragmentActivity {
 
     //Define TextViews
     EditText editTextQuestionTwo;
+    TextView questionThreeExtraCredit;
+    TextView questionThreeTextView;
+    TextView questionThreeECTextView;
     CheckedTextView questionThreeOptionA;
     CheckedTextView questionThreeOptionB;
     CheckedTextView questionThreeOptionC;
     CheckedTextView questionThreeOptionD;
     CheckedTextView questionThreeOptionE;
     CheckedTextView questionThreeOptionF;
-    TextView questionThreeExtraCredit;
-    TextView questionThreeTextView;
-    TextView questionThreeECTextView;
 
     //Define Layouts
     LinearLayout questionThreeLinear;
@@ -94,28 +92,23 @@ public class StartQuizActivity extends FragmentActivity {
     String videoPath;
     Uri uriPath;
 
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_quiz_start);
         //Find View By Definitions
-        playVideo = findViewById(R.id.start_fragment_four_video);
-        questionFourVideoViewer = findViewById(R.id.video_view_fragment_four);
         fragmentQuestionOne = findViewById(R.id.questionOneRadioGroup);
         questionOneAnswerOne = findViewById(R.id.question_one_a1);
         questionOneAnswerTwo = findViewById(R.id.question_one_a2);
         questionOneAnswerThree = findViewById(R.id.question_one_a3);
         questionOneAnswerFour = findViewById(R.id.question_one_a4);
         questionOneSubmit = findViewById(R.id.submit_answer_question_one);
-        questionProgress = findViewById(R.id.progressBar);
         editTextQuestionTwo = findViewById(R.id.question_two_answerEditText);
         questionTwoSubmit = findViewById(R.id.submit_answer_question_two);
+        questionThreeTextView = findViewById(R.id.question_three_text);
+        questionThreeExtraCredit = findViewById(R.id.question_three_extra_credit);
+        questionThreeECTextView = findViewById(R.id.question_three_extra_credit_text);
+        questionThreeRadioGroup = findViewById(R.id.questionThreeExtraCreditRadioGroup);
         questionThreeOptionA = findViewById(R.id.question_three_optionA);
         questionThreeOptionB = findViewById(R.id.question_three_optionB);
         questionThreeOptionC = findViewById(R.id.question_three_optionC);
@@ -125,14 +118,11 @@ public class StartQuizActivity extends FragmentActivity {
         linearLayoutQuestionThreeChoices = findViewById(R.id.question_three_linear_switch_display);
         submitChoicesQuestionThree = findViewById(R.id.submit_answer_question_three);
         showCheckedTextViewsQuestionThree = findViewById(R.id.question_three_show_checked_text_views);
-        questionThreeTextView = findViewById(R.id.question_three_text);
-        questionThreeExtraCredit = findViewById(R.id.question_three_extra_credit);
-        questionThreeECTextView = findViewById(R.id.question_three_extra_credit_text);
-        questionThreeRadioGroup = findViewById(R.id.questionThreeExtraCreditRadioGroup);
-
+        playVideo = findViewById(R.id.start_fragment_four_video);
+        questionFourVideoViewer = findViewById(R.id.video_view_fragment_four);
+        questionProgress = findViewById(R.id.progressBar);
 
         this.initializePaging();
-
     }
 
     public void initializePaging() {
@@ -150,7 +140,6 @@ public class StartQuizActivity extends FragmentActivity {
         ViewPager pager = (ViewPager) super.findViewById(R.id.viewPager);
         pager.setAdapter(this.mPagerAdapter);
     }
-
     @Override
     public void onBackPressed() {
         final ViewPager pager = (ViewPager)super.findViewById(R.id.viewPager);
@@ -163,7 +152,6 @@ public class StartQuizActivity extends FragmentActivity {
             pager.setCurrentItem(pager.getCurrentItem() - 1);
         }
     }
-
 
     public class ProgressBarAnimation extends Animation {
         //Creates the progress bar animation effect
@@ -535,9 +523,6 @@ public class StartQuizActivity extends FragmentActivity {
         questionThreeRadioGroup.setVisibility(VISIBLE);
     }
 
-
-
-
     public void onClickSubmitQuestionThreeExtraCredit(View view) {
         fragmentQuestionThree = findViewById(R.id.questionThreeExtraCreditRadioGroup);
         questionThreeAnswerOneEC = findViewById(R.id.question_threeEC_a1);
@@ -589,7 +574,6 @@ public class StartQuizActivity extends FragmentActivity {
         //Prepare the video
         setupMedia();
         setupListeners();
-
     }
 
     private void setupMedia() {
@@ -598,22 +582,15 @@ public class StartQuizActivity extends FragmentActivity {
     }
 
     private void setupListeners() {
-        
     }
 
-
-
-
     public void onClickSubmitQuestionFour (View view) {
-
     }
 
     public void displayCurrentScore (int score) {
         TextView currentScoreTV = findViewById(R.id.currentScoreDisplay);
         currentScoreTV.setText(String.valueOf(score));
     }
-
-
 }
 
 
