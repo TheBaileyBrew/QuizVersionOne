@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#081e97</color>
-    <color name="colorPrimaryDark">#020c4b</color>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#111111</color>
     <color name="colorAccent">#8efa6a</color>
     <color name="grayFadeD">#dddddd</color>
     <color name="darkBlack">#111000</color>
+    <color name="incorrectRed">#ff0000</color>
+    <color name="colorPrimaryWhite">#FFFFFF</color>
+    <color name="colorPrimaryWhiteDark">#DDDDDD</color>
+    <color name="grayFadeDWhite">#555555</color>
+    <color name="darkWhite">#efefef</color>
 </resources>

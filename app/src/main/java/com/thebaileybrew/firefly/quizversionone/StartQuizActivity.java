@@ -11,6 +11,7 @@ import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.Gravity;
@@ -40,6 +41,8 @@ import static android.view.View.VISIBLE;
  */
 
 public class StartQuizActivity extends FragmentActivity {
+    private final static String TAG = "QuizActivity";
+
     //Define Buttons & Radio Groups
     Button questionOneSubmit;
     Button questionTwoSubmit;
@@ -98,32 +101,15 @@ public class StartQuizActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_quiz_start);
         //Find View By Definitions
-        fragmentQuestionOne = findViewById(R.id.questionOneRadioGroup);
-        questionOneAnswerOne = findViewById(R.id.question_one_a1);
-        questionOneAnswerTwo = findViewById(R.id.question_one_a2);
-        questionOneAnswerThree = findViewById(R.id.question_one_a3);
-        questionOneAnswerFour = findViewById(R.id.question_one_a4);
-        questionOneSubmit = findViewById(R.id.submit_answer_question_one);
-        editTextQuestionTwo = findViewById(R.id.question_two_answerEditText);
-        questionTwoSubmit = findViewById(R.id.submit_answer_question_two);
-        questionThreeTextView = findViewById(R.id.question_three_text);
-        questionThreeExtraCredit = findViewById(R.id.question_three_extra_credit);
-        questionThreeECTextView = findViewById(R.id.question_three_extra_credit_text);
-        questionThreeRadioGroup = findViewById(R.id.questionThreeExtraCreditRadioGroup);
-        questionThreeOptionA = findViewById(R.id.question_three_optionA);
-        questionThreeOptionB = findViewById(R.id.question_three_optionB);
-        questionThreeOptionC = findViewById(R.id.question_three_optionC);
-        questionThreeOptionD = findViewById(R.id.question_three_optionD);
-        questionThreeOptionE = findViewById(R.id.question_three_optionE);
-        questionThreeOptionF = findViewById(R.id.question_three_optionF);
-        linearLayoutQuestionThreeChoices = findViewById(R.id.question_three_linear_switch_display);
-        submitChoicesQuestionThree = findViewById(R.id.submit_answer_question_three);
-        showCheckedTextViewsQuestionThree = findViewById(R.id.question_three_show_checked_text_views);
-        playVideo = findViewById(R.id.start_fragment_four_video);
-        questionFourVideoViewer = findViewById(R.id.video_view_fragment_four);
+
+
+
+
         questionProgress = findViewById(R.id.progressBar);
 
         this.initializePaging();
@@ -177,28 +163,48 @@ public class StartQuizActivity extends FragmentActivity {
         }
     }
 
+
+    //Processing Details for FRAGMENT ONE - onClick Method for SUBMIT
     public void onClickSubmitQuestionOne(View view) {
-        //switch statement checks for radio id selection, based on id reference in the radio group
+        //Defines the location of question one radio group and contained radio buttons
+        fragmentQuestionOne = findViewById(R.id.questionOneRadioGroup);
+        questionOneAnswerOne = findViewById(R.id.question_one_a1);
+        String questionOneAnswerOneStringValue = questionOneAnswerOne.getText().toString();
+        questionOneAnswerTwo = findViewById(R.id.question_one_a2);
+        String questionOneAnswerTwoStringValue = questionOneAnswerTwo.getText().toString();
+        questionOneAnswerThree = findViewById(R.id.question_one_a3);
+        String questionOneAnswerThreeStringValue = questionOneAnswerThree.getText().toString();
+        questionOneAnswerFour = findViewById(R.id.question_one_a4);
+        String questionOneAnswerFourStringValue = questionOneAnswerFour.getText().toString();
+        questionOneSubmit = findViewById(R.id.submit_answer_question_one);
+        //switch statement to check which radio button is selected
         switch (fragmentQuestionOne.getCheckedRadioButtonId()) {
             case R.id.question_one_a1:
                 //Correct
-                Toast.makeText(getApplicationContext(), "Correct. Malcolm Reynolds is the captain.", Toast.LENGTH_LONG).show();
-                currentScore += 10;
+                Toast.makeText(getApplicationContext(), "Correct. " + questionOneAnswerOneStringValue + " is the captain.", Toast.LENGTH_LONG).show();
+                questionOneAnswerOne.setTextColor(getResources().getColor(R.color.colorAccent));
+                currentScore = currentScore + 10;
                 break;
             case R.id.question_one_a2:
                 //Incorrect
-                Toast.makeText(getApplicationContext(), "Incorrect. River Tam is a special stowaway.", Toast.LENGTH_LONG).show();
-                currentScore -= 5;
+                Toast.makeText(getApplicationContext(), "Incorrect. " + questionOneAnswerTwoStringValue + " is a special stowaway.", Toast.LENGTH_LONG).show();
+                questionOneAnswerOne.setTextColor(getResources().getColor(R.color.colorAccent));
+                questionOneAnswerTwo.setTextColor(getResources().getColor(R.color.incorrectRed));
+                currentScore = currentScore - 5;
                 break;
             case R.id.question_one_a3:
                 //Incorrect
-                Toast.makeText(getApplicationContext(), "Incorrect. Jayne Cobb is a hired gun/mercenary.", Toast.LENGTH_LONG).show();
-                currentScore -= 5;
+                Toast.makeText(getApplicationContext(), "Incorrect. " + questionOneAnswerThreeStringValue + " is a hired gun/mercenary.", Toast.LENGTH_LONG).show();
+                questionOneAnswerOne.setTextColor(getResources().getColor(R.color.colorAccent));
+                questionOneAnswerThree.setTextColor(getResources().getColor(R.color.incorrectRed));
+                currentScore = currentScore - 5;
                 break;
             case R.id.question_one_a4:
                 //Incorrect
-                Toast.makeText(getApplicationContext(), "Incorrect. Zoe Washborne is the first mate.", Toast.LENGTH_LONG).show();
-                currentScore -=5;
+                Toast.makeText(getApplicationContext(), "Incorrect. " + questionOneAnswerFourStringValue + " is the first mate.", Toast.LENGTH_LONG).show();
+                questionOneAnswerOne.setTextColor(getResources().getColor(R.color.colorAccent));
+                questionOneAnswerFour.setTextColor(getResources().getColor(R.color.incorrectRed));
+                currentScore = currentScore - 5;
                 break;
             default:
                 //No Selection
@@ -221,6 +227,7 @@ public class StartQuizActivity extends FragmentActivity {
         questionProgress.startAnimation(anim);
 
         //Auto-advance the Page Viewer
+        final ViewPager pager = (ViewPager) super.findViewById(R.id.viewPager);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -231,68 +238,90 @@ public class StartQuizActivity extends FragmentActivity {
 
     }
 
+
+    //Processing Details for FRAGMENT TWO - onClick Method for SUBMIT
     public void onClickSubmitQuestionTwo (View view) {
+        editTextQuestionTwo = findViewById(R.id.question_two_answerEditText);
+        questionTwoSubmit = findViewById(R.id.submit_answer_question_two);
         String questionTwoAnswer = editTextQuestionTwo.getText().toString();
         Log.i(questionTwoAnswer, "User entered text is:");
         if (questionTwoAnswer.equals("")) {
             Toast.makeText(getApplicationContext(), "Please enter a ship classification", Toast.LENGTH_LONG).show();
+            return;
         } else {
             switch (questionTwoAnswer) {
                 case "Firefly":
                     //Correct
-                    currentScore += 10;
+                    currentScore = currentScore + 10;
+                    editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "FIREFLY":
                     //Correct
-                    currentScore += 10;
+                    currentScore = currentScore + 10;
+                    editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "Fire Fly":
                     //Correct
-                    currentScore += 10;
+                    currentScore = currentScore + 10;
+                    editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "Fire fly":
                     //Correct
-                    currentScore += 10;
+                    currentScore = currentScore + 10;
+                    editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "FIRE FLY":
                     //Correct
-                    currentScore += 10;
+                    currentScore = currentScore + 10;
+                    editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "fire fly":
                     //Correct
-                    currentScore += 10;
+                    currentScore = currentScore + 10;
+                    editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "firefly":
                     //Correct
-                    currentScore += 10;
+                    currentScore = currentScore + 10;
+                    editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "FireFly":
                     //Correct
-                    currentScore += 1;
+                    currentScore = currentScore + 10;
+                    editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
+                    Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 default:
+                    currentScore = currentScore - 10;
+                    editTextQuestionTwo.setTextColor(getResources().getColor(R.color.incorrectRed));
                     Toast.makeText(getApplicationContext(), "The correct answer is Firefly", Toast.LENGTH_LONG).show();
                     break;
             }
         }
         //Update the Score Display
         displayCurrentScore(currentScore);
+
         //Fade the Submit Button
         questionTwoSubmit.setClickable(false);
         questionTwoSubmit.setText("Answer Submitted");
         questionTwoSubmit.setTextColor(getResources().getColor(R.color.grayFadeD));
+
         //Animate the progress bar
-        ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, 600, 1200);
+        currentProgress = questionProgress.getProgress();
+        desiredProgress = currentProgress + 600;
+        ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, currentProgress, desiredProgress);
         anim.setDuration(3000);
         questionProgress.startAnimation(anim);
+
         //Auto-advance the Page Viewer
+        final ViewPager pager = (ViewPager) super.findViewById(R.id.viewPager);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -302,8 +331,26 @@ public class StartQuizActivity extends FragmentActivity {
         }, 3000);
     }
 
+
+    //Processing Details for FRAGMENT THREE - onClick Method
     public void onClickInitiateCheckedTextView (View view) {
-        if (showCheckedTextViewsQuestionThree.getText().toString() == "Show Options") {
+        questionThreeTextView = findViewById(R.id.question_three_text);
+        questionThreeExtraCredit = findViewById(R.id.question_three_extra_credit);
+        questionThreeECTextView = findViewById(R.id.question_three_extra_credit_text);
+        questionThreeRadioGroup = findViewById(R.id.questionThreeExtraCreditRadioGroup);
+        questionThreeOptionA = findViewById(R.id.question_three_optionA);
+        questionThreeOptionB = findViewById(R.id.question_three_optionB);
+        questionThreeOptionC = findViewById(R.id.question_three_optionC);
+        questionThreeOptionD = findViewById(R.id.question_three_optionD);
+        questionThreeOptionE = findViewById(R.id.question_three_optionE);
+        questionThreeOptionF = findViewById(R.id.question_three_optionF);
+        linearLayoutQuestionThreeChoices = findViewById(R.id.question_three_linear_switch_display);
+        submitChoicesQuestionThree = findViewById(R.id.submit_answer_question_three);
+        showCheckedTextViewsQuestionThree = findViewById(R.id.question_three_show_checked_text_views);
+        String CheckedTextViewString = showCheckedTextViewsQuestionThree.getText().toString();
+
+
+        if (CheckedTextViewString == "Show Options") {
             linearLayoutQuestionThreeChoices.setVisibility(VISIBLE);
             submitChoicesQuestionThree.setVisibility(VISIBLE);
             showCheckedTextViewsQuestionThree.setText("Hide Options");
@@ -481,31 +528,44 @@ public class StartQuizActivity extends FragmentActivity {
             //Two Correct answers plus at least one incorrect
             Toast.makeText(this, "You've chosen the correct answers plus a few wrong", Toast.LENGTH_SHORT).show();
             currentScore += 10;
-            currentScore = currentScore - (5*(selectedTextViews - 1));
+            currentScore = currentScore - (5*(selectedTextViews - 2));
         } else if (correctTextViews == 0 && selectedTextViews >= 1) {
             //Zero correct answers plus at least one incorrect
             Toast.makeText(this, "You've selected zero correct answers", Toast.LENGTH_SHORT).show();
-            currentScore = currentScore - (5*(selectedTextViews - 1));
+            currentScore = currentScore - (5*(selectedTextViews));
         } else if (correctTextViews == 0 && selectedTextViews == 0) {
             //Zero correct answers selected plus zero incorrect
-            Toast.makeText(this, "You've made no selection", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You've made no selections", Toast.LENGTH_SHORT).show();
         }
-
         submitChoicesQuestionThree.setVisibility(GONE);
         showCheckedTextViewsQuestionThree.setVisibility(GONE);
 
         //Update the Score Display
         displayCurrentScore(currentScore);
+
         //Animate the progress bar
-        ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, 1800, 2400);
+        currentProgress = questionProgress.getProgress();
+        desiredProgress = currentProgress + 600;
+        ProgressBarAnimation anim = new ProgressBarAnimation(questionProgress, currentProgress, desiredProgress);
         anim.setDuration(3000);
         questionProgress.startAnimation(anim);
 
         if (correctTextViews >= 1) {
             //Advance to Extra Credit Question
+            //Set Fragment Three Question and Checked Text to GONE
+            submitChoicesQuestionThree.setVisibility(GONE);
+            showCheckedTextViewsQuestionThree.setVisibility(GONE);
+            questionThreeTextView.setVisibility(GONE);
+            questionThreeLinear.setVisibility(GONE);
+            //Set Extra Credit Questions to VISIBLE
+            questionThreeExtraCredit.setVisibility(VISIBLE);
+            questionThreeECTextView.setVisibility(VISIBLE);
+            questionThreeRadioGroup.setVisibility(VISIBLE);
         } else {
             //Advance to Fragment Four
+
             //Auto-advance the Page Viewer
+            final ViewPager pager = (ViewPager) super.findViewById(R.id.viewPager);
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -517,49 +577,49 @@ public class StartQuizActivity extends FragmentActivity {
 
     }
 
-    public void advanceToExtraCredit (View view) {
-        //Set Question to GONE
-        submitChoicesQuestionThree.setVisibility(GONE);
-        showCheckedTextViewsQuestionThree.setVisibility(GONE);
-        questionThreeTextView.setVisibility(GONE);
-        questionThreeLinear.setVisibility(GONE);
-        //Set Extra Credit to VISIBLE
-        questionThreeExtraCredit.setVisibility(VISIBLE);
-        questionThreeECTextView.setVisibility(VISIBLE);
-        questionThreeRadioGroup.setVisibility(VISIBLE);
-    }
-
     public void onClickSubmitQuestionThreeExtraCredit(View view) {
         fragmentQuestionThree = findViewById(R.id.questionThreeExtraCreditRadioGroup);
         questionThreeAnswerOneEC = findViewById(R.id.question_threeEC_a1);
+        String questionThreeAnswerOneText = questionThreeAnswerOneEC.getText().toString();
         questionThreeAnswerTwoEC = findViewById(R.id.question_threeEC_a2);
+        String questionThreeAnswerTwoText = questionThreeAnswerTwoEC.getText().toString();
         questionThreeAnswerThreeEC = findViewById(R.id.question_threeEC_a3);
+        String questionThreeAnswerThreeText = questionThreeAnswerThreeEC.getText().toString();
         questionThreeAnswerFourEC = findViewById(R.id.question_threeEC_a4);
+        String questionThreeAnswerFourText = questionThreeAnswerFourEC.getText().toString();
 
-        switch (fragmentQuestionOne.getCheckedRadioButtonId()) {
-            case R.id.question_one_a1:
+        switch (fragmentQuestionThree.getCheckedRadioButtonId()) {
+            case R.id.question_threeEC_a1:
                 //Correct
-                Toast.makeText(getApplicationContext(), "Correct. Malcolm Reynolds is the captain.", Toast.LENGTH_LONG).show();
-                currentScore += 10;
+                questionThreeAnswerOneEC.setTextColor(getResources().getColor(R.color.incorrectRed));
+                questionThreeAnswerTwoEC.setTextColor(getResources().getColor(R.color.colorAccent));
+                Toast.makeText(getApplicationContext(), "Incorrect. " + questionThreeAnswerOneText+ " is not the correct Eastwood character.", Toast.LENGTH_SHORT).show();
+                currentScore = currentScore - 10;
                 break;
-            case R.id.question_one_a2:
+            case R.id.question_threeEC_a2:
                 //Incorrect
-                Toast.makeText(getApplicationContext(), "Incorrect. River Tam is a special stowaway.", Toast.LENGTH_LONG).show();
+                questionThreeAnswerTwoEC.setTextColor(getResources().getColor(R.color.colorAccent));
+                Toast.makeText(getApplicationContext(), "Correct. "+ questionThreeAnswerTwoText + " is the correct Eastwood character.", Toast.LENGTH_SHORT).show();
+                currentScore = currentScore + 10;
+                break;
+            case R.id.question_threeEC_a3:
+                //Incorrect
+                questionThreeAnswerThreeEC.setTextColor(getResources().getColor(R.color.incorrectRed));
+                questionThreeAnswerTwoEC.setTextColor(getResources().getColor(R.color.colorAccent));
+                Toast.makeText(getApplicationContext(), "Incorrect. "+ questionThreeAnswerThreeText + " is not the correct Eastwood character.", Toast.LENGTH_SHORT).show();
                 currentScore -= 5;
                 break;
-            case R.id.question_one_a3:
+            case R.id.question_threeEC_a4:
                 //Incorrect
-                Toast.makeText(getApplicationContext(), "Incorrect. Jayne Cobb is a hired gun/mercenary.", Toast.LENGTH_LONG).show();
-                currentScore -= 5;
-                break;
-            case R.id.question_one_a4:
-                //Incorrect
-                Toast.makeText(getApplicationContext(), "Incorrect. Zoe Washborne is the first mate.", Toast.LENGTH_LONG).show();
+                questionThreeAnswerFourEC.setTextColor(getResources().getColor(R.color.incorrectRed));
+                questionThreeAnswerTwoEC.setTextColor(getResources().getColor(R.color.colorAccent));
+                Toast.makeText(getApplicationContext(), "Incorrect. " + questionThreeAnswerFourText + " is not the correct Eastwood character.", Toast.LENGTH_SHORT).show();
                 currentScore -= 5;
                 break;
             default:
                 //No Selection
-                Toast.makeText(getApplicationContext(), "Please make a selection", Toast.LENGTH_LONG).show();
+                questionThreeAnswerTwoEC.setTextColor(getResources().getColor(R.color.colorAccent));
+                Toast.makeText(getApplicationContext(), "No answer is better than a wrong answer I guess.", Toast.LENGTH_LONG).show();
                 break;
         }
 
@@ -574,6 +634,8 @@ public class StartQuizActivity extends FragmentActivity {
     }
 
     public void onClickStartThemeVideo(View view) {
+        playVideo = findViewById(R.id.start_fragment_four_video);
+        questionFourVideoViewer = findViewById(R.id.video_view_fragment_four);
         videoPath = "android.resource://" + getPackageName()+ "/" + R.raw.fireflyopening;
         uriPath = Uri.parse(videoPath);
         myVideoController = new MediaController(this);
@@ -585,6 +647,7 @@ public class StartQuizActivity extends FragmentActivity {
     private void setupMedia() {
        questionFourVideoViewer.setMediaController(myVideoController);
        questionFourVideoViewer.setVideoURI(uriPath);
+       questionFourVideoViewer.start();
     }
 
     private void setupListeners() {
@@ -593,6 +656,7 @@ public class StartQuizActivity extends FragmentActivity {
     public void onClickSubmitQuestionFour (View view) {
     }
 
+    //Update and display the current score
     public void displayCurrentScore (int score) {
         TextView currentScoreTV = findViewById(R.id.currentScoreDisplay);
         currentScoreTV.setText(String.valueOf(score));
