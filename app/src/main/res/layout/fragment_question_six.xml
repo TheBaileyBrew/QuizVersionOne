@@ -3,6 +3,81 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/firefly_one">
+    android:background="#FFFFFF">
+    <ImageView
+        android:paddingTop="@dimen/photo_padding_top"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/firefly_one"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/question_five_text"
+        style="@style/QuestionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Which of these statements are true?"/>
+    <TextView
+        android:id="@+id/question_five_text_hint"
+        style="@style/QuestionTextHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose all that apply"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="175dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <CheckBox
+                android:id="@+id/question_six_checkbox_one"
+                style="@style/CheckboxSelectionOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Joss Whedon took inspiration from a Pulitzer Prize winning novel while creating Firefly."/>
+            <CheckBox
+                android:id="@+id/question_six_checkbox_two"
+                style="@style/CheckboxSelectionOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="There were several Star Trek references throughout the season."/>
+            <CheckBox
+                android:id="@+id/question_six_checkbox_three"
+                style="@style/CheckboxSelectionOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Neil Patrick Harris auditioned for the role of Shepard Book."/>
+            <CheckBox
+                android:id="@+id/question_six_checkbox_four"
+                style="@style/CheckboxSelectionOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zac Efron made his acting debut in Firefly."/>
+            <CheckBox
+                android:id="@+id/question_six_checkbox_five"
+                style="@style/CheckboxSelectionOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fox aired the Firefly episodes out of order on purpose."/>
+            <CheckBox
+                android:id="@+id/question_six_checkbox_six"
+                style="@style/CheckboxSelectionOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Firefly was only supposed to have a cast of seven instead of nine."/>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/submit_answer_question_six"
+        android:onClick="onClickSubmitQuestionSix"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/submit_answer_padding_sides"
+        android:textAllCaps="false"
+        android:text="Submit Answer"
+        android:textSize="@dimen/submit_answer_text_size"/>
 
 </LinearLayout>

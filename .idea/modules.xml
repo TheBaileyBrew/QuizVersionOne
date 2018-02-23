@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/QuizVersionOne.iml" filepath="$PROJECT_DIR$/QuizVersionOne.iml" />
-      <module fileurl="file://C:\Users\grumnb\OneDrive\Google Scholarship\Android Studio Projects\QuizVersionOne\.idea\QuizVersionOne.iml" filepath="C:\Users\grumnb\OneDrive\Google Scholarship\Android Studio Projects\QuizVersionOne\.idea\QuizVersionOne.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

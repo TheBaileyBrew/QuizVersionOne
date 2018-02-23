@@ -140,5 +140,18 @@
             android:layout_height="wrap_content"
             android:text="William Munny"/>
     </RadioGroup>
+    <Button
+        android:id="@+id/submit_answer_question_threeEC"
+        android:onClick="onClickSubmitQuestionThreeExtra"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/submit_answer_padding_sides"
+        android:layout_marginRight="@dimen/submit_answer_padding_sides"
+        android:textAllCaps="false"
+        android:text="Submit answer"
+        android:textSize="@dimen/submit_answer_text_size"/>
 
 </LinearLayout>

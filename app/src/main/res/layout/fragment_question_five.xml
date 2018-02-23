@@ -3,6 +3,62 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/firefly_one">
+    android:background="#FFFFFF">
+    <ImageView
+        android:paddingTop="@dimen/photo_padding_top"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/firefly_cast"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/question_five_text"
+        style="@style/QuestionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Who sings the show's theme song?"/>
+    <RadioGroup
+        android:id="@+id/questionFiveRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/uniform_left_margin_answer_selections">
+        <RadioButton
+            android:id="@+id/question_five_a1"
+            android:theme="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mark Hummel"/>
+        <RadioButton
+            android:id="@+id/question_five_a2"
+            android:theme="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R.J. Mischo"/>
+        <RadioButton
+            android:id="@+id/question_five_a3"
+            android:theme="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sonny Rhodes"/>
+        <RadioButton
+            android:id="@+id/question_five_a4"
+            android:theme="@style/RadioButtonSelectionOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phil Guy"/>
+    </RadioGroup>
+    <Button
+        android:id="@+id/submit_answer_question_five"
+        android:onClick="onClickSubmitQuestionFive"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/submit_answer_padding_sides"
+        android:textAllCaps="false"
+        android:text="Submit Answer"
+        android:textSize="@dimen/submit_answer_text_size"/>
+
+
 
 </LinearLayout>

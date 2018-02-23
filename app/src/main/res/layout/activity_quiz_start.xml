@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:id="@+id/standard_display_activity_start"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -25,6 +26,7 @@
         <Button
             android:id="@+id/night_mode_day_mode_enable"
             style="@style/Widget.AppCompat.Button.Borderless"
+            android:onClick="onClickSwitchDayNightMode"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:background="@drawable/moon_symbol"
