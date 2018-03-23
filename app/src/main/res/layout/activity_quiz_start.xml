@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/standard_display_activity_start"
+<LinearLayout android:id="@+id/standard_display_activity_start"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="#FFFFFF"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
@@ -16,6 +16,16 @@
         android:layout_height="0dp"
         android:layout_weight="9">
     </android.support.v4.view.ViewPager>
+    <com.gigamole.navigationtabstrip.NavigationTabStrip
+        android:id="@+id/navigation_question_tab"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:nts_active_color="@color/colorAccent"
+        app:nts_inactive_color="@color/colorPrimaryDark"
+        app:nts_color="@color/colorPrimary"
+        app:nts_corners_radius="3dp"
+        app:nts_size="15dp"
+        app:nts_titles="@array/questions"/>
 
     <LinearLayout
         android:layout_width="match_parent"

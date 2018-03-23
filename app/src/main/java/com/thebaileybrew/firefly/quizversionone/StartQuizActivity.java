@@ -35,6 +35,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+
+import com.gigamole.navigationtabstrip.NavigationTabStrip;
+
 import java.util.List;
 import java.util.Vector;
 import static android.view.View.GONE;
@@ -46,6 +49,15 @@ import static android.view.View.VISIBLE;
 
 public class StartQuizActivity extends FragmentActivity {
     private final static String TAG = "QuizActivity";
+
+    //Boolean values for questions submitted
+    Boolean questionOne;
+    Boolean questionTwo;
+    Boolean questionThree;
+    Boolean questionFour;
+    Boolean questionFive;
+    Boolean questionSix;
+    Boolean questionSeven;
 
     //Define Buttons & Radio Groups
     Button questionOneSubmit;
@@ -114,6 +126,7 @@ public class StartQuizActivity extends FragmentActivity {
 
     //Miscelaneous Variable Definitions
     private android.support.v4.view.PagerAdapter mPagerAdapter;
+    NavigationTabStrip navigationTab;
     ViewPager pager;
     ProgressBar questionProgress;
 
@@ -132,10 +145,22 @@ public class StartQuizActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_quiz_start);
 
+        questionOne = false;
+        questionTwo = false;
+        questionThree = false;
+        questionFour = false;
+        questionFive = false;
+        questionSix = false;
+        questionSeven = false;
+
         //initialize the progress bar to be called by any FRAGMENT page
         questionProgress = findViewById(R.id.progressBar);
 
         this.initializePaging();
+
+        navigationTab = findViewById(R.id.navigation_question_tab);
+        navigationTab.setTabIndex(0);
+
     }
 
     public void initializePaging() {
@@ -154,6 +179,40 @@ public class StartQuizActivity extends FragmentActivity {
         //initialize the Pager and set the adapter to use the Fragments
         ViewPager pager = (ViewPager) super.findViewById(R.id.viewPager);
         pager.setAdapter(this.mPagerAdapter);
+
+        pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            public void onPageSelected(int position) {
+                navigationTab.setTabIndex(position);
+                switch (position) {
+                    case 0:
+                        if (questionOne) {
+                            questionOneSubmit.setClickable(false);
+                            questionOneSubmit.setText("Answer Submitted");
+                            questionOneSubmit.setTextColor(getResources().getColor(R.color.grayFadeD));
+                        } else {}
+                        break;
+                    case 1:
+                        if (questionTwo) {
+                            questionTwoSubmit.setClickable(false);
+                            questionTwoSubmit.setText("Answer Submitted");
+                            questionTwoSubmit.setTextColor(getResources().getColor(R.color.grayFadeD));
+                        } else {}
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                }
+            }
+        });
     }
     @Override
     public void onBackPressed() {
@@ -165,6 +224,7 @@ public class StartQuizActivity extends FragmentActivity {
         } else {
             //Otherwise, current Fragment will rotate to the previous Fragment
             pager.setCurrentItem(pager.getCurrentItem() - 1);
+            navigationTab.setTabIndex(navigationTab.getTabIndex() - 1);
         }
     }
 
@@ -270,6 +330,7 @@ public class StartQuizActivity extends FragmentActivity {
             @Override
             public void run() {
                 pager.setCurrentItem(pager.getCurrentItem()+1,true);
+                navigationTab.setTabIndex(navigationTab.getTabIndex()+1);
             }
         }, 3000);
 
@@ -956,13 +1017,10 @@ public class StartQuizActivity extends FragmentActivity {
             @Override
             public void run() {
                 pager.setCurrentItem(pager.getCurrentItem()+1,true);
+                navigationTab.setTabIndex(navigationTab.getTabIndex()+1);
             }
         }, 3000);
     }
-
-
-
-
 
     public String onClickStartThemeVideo(View view) {
         onClickPlay = findViewById(R.id.start_fragment_four_video);
@@ -1010,6 +1068,43 @@ public class StartQuizActivity extends FragmentActivity {
     public void displayCurrentScore (int score) {
         TextView currentScoreTV = findViewById(R.id.currentScoreDisplay);
         currentScoreTV.setText(String.valueOf(score));
+    }
+
+
+    public void onClickQuestionOne (View view) {
+        ViewPager pager = findViewById(R.id.viewPager);
+        navigationTab.setTabIndex(0);
+        pager.setCurrentItem(0,true);
+    }
+    public void onClickQuestionTwo (View view) {
+        ViewPager pager = findViewById(R.id.viewPager);
+        navigationTab.setTabIndex(1);
+        pager.setCurrentItem(1,true);
+    }
+    public void onClickQuestionThree (View view) {
+        ViewPager pager = findViewById(R.id.viewPager);
+        navigationTab.setTabIndex(2);
+        pager.setCurrentItem(2,true);
+    }
+    public void onClickQuestionFour (View view) {
+        ViewPager pager = findViewById(R.id.viewPager);
+        navigationTab.setTabIndex(4);
+        pager.setCurrentItem(4,true);
+    }
+    public void onClickQuestionFive (View view) {
+        ViewPager pager = findViewById(R.id.viewPager);
+        navigationTab.setTabIndex(5);
+        pager.setCurrentItem(5,true);
+    }
+    public void onClickQuestionSix (View view) {
+        ViewPager pager = findViewById(R.id.viewPager);
+        navigationTab.setTabIndex(6);
+        pager.setCurrentItem(6,true);
+    }
+    public void onClickQuestionSeven (View view) {
+        ViewPager pager = findViewById(R.id.viewPager);
+        navigationTab.setTabIndex(7);
+        pager.setCurrentItem(7,true);
     }
 }
 
