@@ -33,15 +33,6 @@
         android:gravity="center"
         android:layout_marginLeft="@dimen/current_score_padding_uniform"
         android:layout_marginRight="@dimen/current_score_padding_uniform">
-        <Button
-            android:id="@+id/night_mode_day_mode_enable"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:onClick="onClickSwitchDayNightMode"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/moon_symbol"
-            android:layout_marginRight="@dimen/radio_button_padding_small"
-            />
         <TextView
             style="@style/StandardTextBoxDisplay"
             android:layout_width="wrap_content"
