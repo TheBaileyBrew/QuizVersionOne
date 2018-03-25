@@ -84,4 +84,15 @@
             android:gravity="center_horizontal"
             android:text="SIX"/>
     </GridLayout>
+    <Button
+        android:id="@+id/submitScoreToSocialMedia"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:onClick="onClickSubmitScoreToSocialMedia"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:textColor="@color/colorPrimaryWhite"
+        android:textSize="22sp"
+        android:text="SUBMIT TO SOCIAL MEDIA"/>
 </LinearLayout>

@@ -90,6 +90,14 @@ public class StartQuizActivity extends FragmentActivity {
     RadioButton questionFiveAnswerThree;
     RadioButton questionFiveAnswerFour;
 
+    //TextView declarations for Fragment Seven
+    TextView questionOneSubmission;
+    TextView questionTwoSubmission;
+    TextView questionThreeSubmission;
+    TextView questionFourSubmission;
+    TextView questionFiveSubmission;
+    TextView questionSixSubmission;
+
 
     //Define integer values
     int currentScore = 0;
@@ -154,15 +162,17 @@ public class StartQuizActivity extends FragmentActivity {
         questionFour = false;
         questionFive = false;
         questionSix = false;
-        questionSeven = false;
 
         //initialize the progress bar to be called by any FRAGMENT page
         questionProgress = findViewById(R.id.progressBar);
+        questionProgress.setMax(3600);
         this.initializePaging();
 
         //initialize the navigation tab to partner with the ViewPager
         navigationTab = findViewById(R.id.navigation_question_tab);
         navigationTab.setTabIndex(0);
+
+        navigationTabIndexListener();
     }
 
     /*
@@ -229,8 +239,7 @@ public class StartQuizActivity extends FragmentActivity {
                         break;
                     case 6:
                         //Fragment Seven
-                        if (questionSeven) {
-                        }
+                        questionSubmissionCheck();
                         break;
                 }
             }
@@ -331,25 +340,25 @@ public class StartQuizActivity extends FragmentActivity {
             case R.id.question_one_a1:
                 Toast.makeText(getApplicationContext(), "Correct. " + questionOneAnswerOneStringValue + " is the captain.", Toast.LENGTH_LONG).show();
                 questionOneAnswerOne.setTextColor(getResources().getColor(R.color.colorAccent));
-                currentScore = currentScore + 10;
+                currentScore = currentScore + 100;
                 break;
             case R.id.question_one_a2:
                 Toast.makeText(getApplicationContext(), "Incorrect. " + questionOneAnswerTwoStringValue + " is a special stowaway.", Toast.LENGTH_LONG).show();
                 questionOneAnswerOne.setTextColor(getResources().getColor(R.color.colorAccent));
                 questionOneAnswerTwo.setTextColor(getResources().getColor(R.color.incorrectRed));
-                currentScore = currentScore - 5;
+                currentScore = currentScore - 25;
                 break;
             case R.id.question_one_a3:
                 Toast.makeText(getApplicationContext(), "Incorrect. " + questionOneAnswerThreeStringValue + " is a hired gun/mercenary.", Toast.LENGTH_LONG).show();
                 questionOneAnswerOne.setTextColor(getResources().getColor(R.color.colorAccent));
                 questionOneAnswerThree.setTextColor(getResources().getColor(R.color.incorrectRed));
-                currentScore = currentScore - 5;
+                currentScore = currentScore - 25;
                 break;
             case R.id.question_one_a4:
                 Toast.makeText(getApplicationContext(), "Incorrect. " + questionOneAnswerFourStringValue + " is the first mate.", Toast.LENGTH_LONG).show();
                 questionOneAnswerOne.setTextColor(getResources().getColor(R.color.colorAccent));
                 questionOneAnswerFour.setTextColor(getResources().getColor(R.color.incorrectRed));
-                currentScore = currentScore - 5;
+                currentScore = currentScore - 25;
                 break;
             default:
                 /*
@@ -397,54 +406,54 @@ public class StartQuizActivity extends FragmentActivity {
             switch (questionTwoAnswer) {
                 case "Firefly":
                     //Correct
-                    currentScore = currentScore + 10;
+                    currentScore = currentScore + 100;
                     editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "FIREFLY":
                     //Correct
-                    currentScore = currentScore + 10;
+                    currentScore = currentScore + 100;
                     editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "Fire Fly":
                     //Correct
-                    currentScore = currentScore + 10;
+                    currentScore = currentScore + 100;
                     editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "Fire fly":
                     //Correct
-                    currentScore = currentScore + 10;
+                    currentScore = currentScore + 100;
                     editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "FIRE FLY":
                     //Correct
-                    currentScore = currentScore + 10;
+                    currentScore = currentScore + 100;
                     editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "fire fly":
                     //Correct
-                    currentScore = currentScore + 10;
+                    currentScore = currentScore + 100;
                     editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "firefly":
                     //Correct
-                    currentScore = currentScore + 10;
+                    currentScore = currentScore + 100;
                     editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 case "FireFly":
                     //Correct
-                    currentScore = currentScore + 10;
+                    currentScore = currentScore + 100;
                     editTextQuestionTwo.setTextColor(getResources().getColor(R.color.colorAccent));
                     Toast.makeText(getApplicationContext(), "Correct, " + questionTwoAnswer + " is the classification", Toast.LENGTH_LONG).show();
                     break;
                 default:
-                    currentScore = currentScore - 10;
+                    currentScore = currentScore - 25;
                     editTextQuestionTwo.setTextColor(getResources().getColor(R.color.incorrectRed));
                     Toast.makeText(getApplicationContext(), "The correct answer is Firefly", Toast.LENGTH_LONG).show();
                     break;
@@ -662,25 +671,25 @@ public class StartQuizActivity extends FragmentActivity {
         if (correctTextViews == 2 && selectedTextViews == 2) {
             // Two correct answers plus zero incorrect
             Toast.makeText(this, "You've chosen correctly", Toast.LENGTH_SHORT).show();
-            currentScore += 20;
+            currentScore = currentScore + 200;
         } else if (correctTextViews == 1 && selectedTextViews == 1) {
             //One correct answer plus zero incorrect
             Toast.makeText(this, "You've chosen one select answer", Toast.LENGTH_SHORT).show();
             currentScore += 10;
-            currentScore = currentScore - 5;
+            currentScore = currentScore + 100;
         } else if (correctTextViews == 0 && selectedTextViews == 0) {
             //Zero correct answers selected plus zero incorrect
             Toast.makeText(this, "You've made no selections", Toast.LENGTH_SHORT).show();
-            currentScore = currentScore - 10;
+            currentScore = currentScore - 25;
         } else if (correctTextViews == 1 && selectedTextViews >= 2) {
             //One correct answer plus at least one incorrect
             Toast.makeText(this, "You've chosen one select answer", Toast.LENGTH_SHORT).show();
-            currentScore += 10;
-            currentScore = currentScore - (5*(selectedTextViews - 1));
+            currentScore = currentScore + 100;
+            currentScore = currentScore - (5*(selectedTextViews - 2));
         } else if (correctTextViews == 2 && selectedTextViews > 2) {
             //Two Correct answers plus at least one incorrect
             Toast.makeText(this, "You've chosen the correct answers plus a few wrong", Toast.LENGTH_SHORT).show();
-            currentScore += 20;
+            currentScore = currentScore + 200;
             currentScore = currentScore - (5*(selectedTextViews - 2));
         } else if (correctTextViews == 0 && selectedTextViews >= 1) {
             //Zero correct answers plus at least one incorrect
@@ -745,27 +754,27 @@ public class StartQuizActivity extends FragmentActivity {
                 questionThreeAnswerOneEC.setTextColor(getResources().getColor(R.color.incorrectRed));
                 questionThreeAnswerTwoEC.setTextColor(getResources().getColor(R.color.colorAccent));
                 Toast.makeText(getApplicationContext(), "Incorrect. " + questionThreeAnswerOneText+ " is not the correct Eastwood character.", Toast.LENGTH_SHORT).show();
-                currentScore = currentScore - 10;
+                currentScore = currentScore + 100;
                 break;
             case R.id.question_threeEC_a2:
                 //Incorrect
                 questionThreeAnswerTwoEC.setTextColor(getResources().getColor(R.color.colorAccent));
                 Toast.makeText(getApplicationContext(), "Correct. "+ questionThreeAnswerTwoText + " is the correct Eastwood character.", Toast.LENGTH_SHORT).show();
-                currentScore = currentScore + 10;
+                currentScore = currentScore - 25;
                 break;
             case R.id.question_threeEC_a3:
                 //Incorrect
                 questionThreeAnswerThreeEC.setTextColor(getResources().getColor(R.color.incorrectRed));
                 questionThreeAnswerTwoEC.setTextColor(getResources().getColor(R.color.colorAccent));
                 Toast.makeText(getApplicationContext(), "Incorrect. "+ questionThreeAnswerThreeText + " is not the correct Eastwood character.", Toast.LENGTH_SHORT).show();
-                currentScore -= 5;
+                currentScore = currentScore - 25;
                 break;
             case R.id.question_threeEC_a4:
                 //Incorrect
                 questionThreeAnswerFourEC.setTextColor(getResources().getColor(R.color.incorrectRed));
                 questionThreeAnswerTwoEC.setTextColor(getResources().getColor(R.color.colorAccent));
                 Toast.makeText(getApplicationContext(), "Incorrect. " + questionThreeAnswerFourText + " is not the correct Eastwood character.", Toast.LENGTH_SHORT).show();
-                currentScore -= 5;
+                currentScore = currentScore - 25;
                 break;
             default:
                 //No Selection
@@ -802,27 +811,27 @@ public class StartQuizActivity extends FragmentActivity {
         //each case return will apply scoring and change resource color of the selected and correct radio button text
         switch (fragmentQuestionFour.getCheckedRadioButtonId()) {
             case R.id.question_four_a1:
-                Toast.makeText(getApplicationContext(), "Correct. " + questionFourAnswerOneStringValue + " is not the song name.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Incorrect. " + questionFourAnswerOneStringValue + " is not the song name.", Toast.LENGTH_LONG).show();
                 questionFourAnswerThree.setTextColor(getResources().getColor(R.color.colorAccent));
                 questionFourAnswerOne.setTextColor(getResources().getColor(R.color.incorrectRed));
-                currentScore = currentScore - 5;
+                currentScore = currentScore - 25;
                 break;
             case R.id.question_four_a2:
                 Toast.makeText(getApplicationContext(), "Incorrect. " + questionFourAnswerTwoStringValue + " is not the song name.", Toast.LENGTH_LONG).show();
                 questionFourAnswerThree.setTextColor(getResources().getColor(R.color.colorAccent));
                 questionFourAnswerTwo.setTextColor(getResources().getColor(R.color.incorrectRed));
-                currentScore = currentScore - 5;
+                currentScore = currentScore - 25;
                 break;
             case R.id.question_four_a3:
                 Toast.makeText(getApplicationContext(), "Correct. " + questionFourAnswerThreeStringValue + " is the song name.", Toast.LENGTH_LONG).show();
                 questionFourAnswerThree.setTextColor(getResources().getColor(R.color.colorAccent));
-                currentScore = currentScore + 10;
+                currentScore = currentScore + 100;
                 break;
             case R.id.question_four_a4:
                 Toast.makeText(getApplicationContext(), "Incorrect. " + questionFourAnswerFourStringValue + " is not the song name.", Toast.LENGTH_LONG).show();
                 questionFourAnswerThree.setTextColor(getResources().getColor(R.color.colorAccent));
                 questionFourAnswerFour.setTextColor(getResources().getColor(R.color.incorrectRed));
-                currentScore = currentScore - 5;
+                currentScore = currentScore - 25;
                 break;
             default:
                 //No Selection
@@ -856,7 +865,7 @@ public class StartQuizActivity extends FragmentActivity {
         String questionFiveAnswerTwoStringValue = questionFiveAnswerTwo.getText().toString();
         questionFiveAnswerThree = findViewById(R.id.question_five_a3);
         String questionFiveAnswerThreeStringValue = questionFiveAnswerThree.getText().toString();
-        questionFourAnswerFour = findViewById(R.id.question_five_a4);
+        questionFiveAnswerFour = findViewById(R.id.question_five_a4);
         String questionFiveAnswerFourStringValue = questionFiveAnswerFour.getText().toString();
         questionFiveSubmit = findViewById(R.id.submit_answer_question_five);
         //switch statement to check which radio button is selected
@@ -866,24 +875,24 @@ public class StartQuizActivity extends FragmentActivity {
                 Toast.makeText(getApplicationContext(), "Correct. " + questionFiveAnswerOneStringValue + " is not the song name.", Toast.LENGTH_LONG).show();
                 questionFiveAnswerThree.setTextColor(getResources().getColor(R.color.colorAccent));
                 questionFiveAnswerOne.setTextColor(getResources().getColor(R.color.incorrectRed));
-                currentScore = currentScore - 5;
+                currentScore = currentScore - 25;
                 break;
             case R.id.question_five_a2:
                 Toast.makeText(getApplicationContext(), "Incorrect. " + questionFiveAnswerTwoStringValue + " is not the song name.", Toast.LENGTH_LONG).show();
                 questionFiveAnswerThree.setTextColor(getResources().getColor(R.color.colorAccent));
                 questionFiveAnswerTwo.setTextColor(getResources().getColor(R.color.incorrectRed));
-                currentScore = currentScore - 5;
+                currentScore = currentScore - 25;
                 break;
             case R.id.question_four_a3:
                 Toast.makeText(getApplicationContext(), "Correct. " + questionFiveAnswerThreeStringValue + " is the song name.", Toast.LENGTH_LONG).show();
                 questionFiveAnswerThree.setTextColor(getResources().getColor(R.color.colorAccent));
-                currentScore = currentScore + 10;
+                currentScore = currentScore + 100;
                 break;
             case R.id.question_five_a4:
                 Toast.makeText(getApplicationContext(), "Incorrect. " + questionFiveAnswerFourStringValue + " is not the song name.", Toast.LENGTH_LONG).show();
                 questionFiveAnswerThree.setTextColor(getResources().getColor(R.color.colorAccent));
                 questionFiveAnswerFour.setTextColor(getResources().getColor(R.color.incorrectRed));
-                currentScore = currentScore - 5;
+                currentScore = currentScore - 25;
                 break;
             default:
                 //No Selection
@@ -1017,29 +1026,29 @@ public class StartQuizActivity extends FragmentActivity {
             Toast.makeText(this, "You've selected zero correct answers", Toast.LENGTH_SHORT).show();
             currentScore = currentScore - (5 * (selectedTextViews));
         }
-        //Update the Score Display
-        displayCurrentScore(currentScore);
 
-        //Fade the Submit Button
+        //Update the score display and fade the submit button
+        displayCurrentScore(currentScore);
         questionSixSubmit.setClickable(false);
         questionSixSubmit.setText("Answer Submitted");
         questionFiveSubmit.setTextColor(getResources().getColor(R.color.grayFadeD));
 
         /*
         Calls the method to update Nav Tab, ViewPager and Progress Bar
-        Set the Boolean for Question 1 to true (answered)
+        Set the Boolean for Question 6 to true (answered)
         */
         questionSix = true;
         updateViewPagerNavigationAndAnimation();
     }
 
-    //This method prepares the video in question four
+    //This method prepares the video in fragment four
     public String onClickStartThemeVideo(View view) {
         onClickPlay = findViewById(R.id.start_fragment_four_video);
         onClickText = onClickPlay.getText().toString();
         questionFourVideoViewer = findViewById(R.id.video_view_fragment_four);
-        if (onClickPlay.getText().toString().equals("Pause")) {
-            questionFourVideoViewer.resume();
+        //Checks the string value of the play button
+        if (onClickPlay.getText().toString().equals("Playing")) {
+            questionFourVideoViewer.pause();
         } else {
             videoPath = "android.resource://" + getPackageName() + "/" + R.raw.fireflyopening;
             uriPath = Uri.parse(videoPath);
@@ -1054,7 +1063,7 @@ public class StartQuizActivity extends FragmentActivity {
     //This method sets the media player for question four
     private void setupMedia() {
         onClickPlay = findViewById(R.id.start_fragment_four_video);
-        onClickPlay.setText("Pause");
+        onClickPlay.setText("Playing");
         questionFourVideoViewer.setMediaController(myVideoController);
         questionFourVideoViewer.setVideoURI(uriPath);
         questionFourVideoViewer.start();
@@ -1071,7 +1080,6 @@ public class StartQuizActivity extends FragmentActivity {
                 questionFourVideoViewer.stopPlayback();
             }
         });
-
     }
 
     //Update and display the current score
@@ -1080,38 +1088,111 @@ public class StartQuizActivity extends FragmentActivity {
         currentScoreTV.setText(String.valueOf(score));
     }
 
+
+    public void navigationTabIndexListener () {
+        navigationTab.setOnTabStripSelectedIndexListener(new NavigationTabStrip.OnTabStripSelectedIndexListener() {
+            @Override
+            public void onStartTabSelected(String title, int index) {
+                switch (index) {
+                    case 0:
+                        onClickQuestionOne();
+                        break;
+                    case 1:
+                        onClickQuestionTwo();
+                        break;
+                    case 2:
+                        onClickQuestionThree();
+                        break;
+                    case 3:
+                        onClickQuestionFour();
+                        break;
+                    case 4:
+                        onClickQuestionFive();
+                        break;
+                    case 5:
+                        onClickQuestionSix();
+                        break;
+                    case 6:
+                        onClickQuestionSeven();
+                        break;
+                }
+            }
+
+            @Override
+            public void onEndTabSelected(String title, int index) {
+                if (index == 6) {
+                    onClickQuestionSeven();
+                }
+            }
+        });
+    }
+
+    public void questionSubmissionCheck() {
+        //Declaration for Fragment Seven and submission check
+        //Check for question one completion
+        questionOneSubmission = findViewById(R.id.final_question_one);
+        if (!questionOne) {
+            questionOneSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
+        }
+        //Check for question two completion
+        questionTwoSubmission = findViewById(R.id.final_question_two);
+        if (!questionTwo) {
+            questionOneSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
+        }
+        //Check for question three completion
+        questionThreeSubmission = findViewById(R.id.final_question_three);
+        if (!questionThree) {
+            questionOneSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
+        }
+        //Check for question four completion
+        questionFourSubmission = findViewById(R.id.final_question_four);
+        if (!questionFour) {
+            questionOneSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
+        }
+        //Check for question five completion
+        questionFiveSubmission = findViewById(R.id.final_question_five);
+        if (!questionFive) {
+            questionOneSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
+        }
+        //Check for question six completion
+        questionSixSubmission = findViewById(R.id.final_question_six);
+        if (!questionSix) {
+            questionOneSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
+        }
+    }
+
     //These methods define the actions taken when the Navigation Tab is clicked
-    public void onClickQuestionOne (View view) {
+    public void onClickQuestionOne () {
         ViewPager pager = findViewById(R.id.viewPager);
         navigationTab.setTabIndex(0);
         pager.setCurrentItem(0,true);
     }
-    public void onClickQuestionTwo (View view) {
+    public void onClickQuestionTwo () {
         ViewPager pager = findViewById(R.id.viewPager);
         navigationTab.setTabIndex(1);
         pager.setCurrentItem(1,true);
     }
-    public void onClickQuestionThree (View view) {
+    public void onClickQuestionThree () {
         ViewPager pager = findViewById(R.id.viewPager);
         navigationTab.setTabIndex(2);
         pager.setCurrentItem(2,true);
     }
-    public void onClickQuestionFour (View view) {
+    public void onClickQuestionFour () {
         ViewPager pager = findViewById(R.id.viewPager);
         navigationTab.setTabIndex(3);
         pager.setCurrentItem(3,true);
     }
-    public void onClickQuestionFive (View view) {
+    public void onClickQuestionFive () {
         ViewPager pager = findViewById(R.id.viewPager);
         navigationTab.setTabIndex(4);
         pager.setCurrentItem(4,true);
     }
-    public void onClickQuestionSix (View view) {
+    public void onClickQuestionSix () {
         ViewPager pager = findViewById(R.id.viewPager);
         navigationTab.setTabIndex(5);
         pager.setCurrentItem(5,true);
     }
-    public void onClickQuestionSeven (View view) {
+    public void onClickQuestionSeven () {
         ViewPager pager = findViewById(R.id.viewPager);
         navigationTab.setTabIndex(6);
         pager.setCurrentItem(6,true);

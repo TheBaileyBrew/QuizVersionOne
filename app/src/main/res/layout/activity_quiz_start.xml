@@ -44,13 +44,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" 0"/>
-        <Button
-            android:id="@+id/submitScoreToSocialMedia"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:text="SUBMIT"/>
     </LinearLayout>
 
     <ProgressBar
