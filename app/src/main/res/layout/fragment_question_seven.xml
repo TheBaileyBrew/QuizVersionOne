@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/firefly_one">
+    android:layout_height="wrap_content">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -11,7 +10,7 @@
         android:layout_marginHorizontal="16dp"
         android:gravity="center"
         android:textSize="26sp"
-        android:textColor="@color/colorPrimaryWhite"
+        android:textColor="@color/colorPrimaryDark"
         android:text="YOU'VE TAKEN SERENITY ACROSS THE UNIVERSE ..."/>
     <TextView
         android:layout_width="match_parent"
@@ -20,8 +19,22 @@
         android:layout_marginBottom="16dp"
         android:gravity="center"
         android:textSize="26sp"
-        android:textColor="@color/colorPrimaryWhite"
-        android:text="BUT YOU MISSED THESE QUESTIONS ALONG THE WAY"/>
+        android:textColor="@color/colorPrimaryDark"
+        android:text="BUT MAKE SURE YOU DIDN'T MISS ANYTHING FIRST"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textStyle="italic"
+        android:textColor="@color/colorAccent"
+        android:text="If it's GREEN, you answered the question"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textStyle="italic"
+        android:textColor="@color/incorrectRed"
+        android:text="If it's RED, you should probably answer that question.."/>
     <GridLayout
         android:layout_width="240dp"
         android:layout_height="240dp"
@@ -91,8 +104,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="false"
-        android:textColor="@color/colorPrimaryWhite"
+        android:clickable="true"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="22sp"
         android:text="SUBMIT TO SOCIAL MEDIA"/>
 </LinearLayout>

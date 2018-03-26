@@ -5,9 +5,10 @@
     android:layout_height="wrap_content"
     android:background="#FFFFFF">
     <VideoView
+        android:layout_marginTop="@dimen/photo_padding_top"
         android:id="@+id/video_view_fragment_four"
         android:layout_width="match_parent"
-        android:layout_height="225dp" />
+        android:layout_height="210dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

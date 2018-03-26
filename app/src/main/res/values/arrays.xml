@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="questions">
-        <item>ONE</item>
-        <item>TWO</item>
-        <item>THREE</item>
-        <item>FOUR</item>
-        <item>FIVE</item>
-        <item>SIX</item>
-        <item>SUBMIT</item>
+        <item>Q 1</item>
+        <item>Q 2</item>
+        <item>Q 3</item>
+        <item>Q 4</item>
+        <item>Q 5</item>
+        <item>Q 6</item>
+        <item>END</item>
     </string-array>
 </resources>

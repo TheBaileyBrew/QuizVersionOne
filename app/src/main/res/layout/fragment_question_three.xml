@@ -6,9 +6,9 @@
     android:layout_height="wrap_content"
     android:background="#FFFFFF">
     <ImageView
-        android:paddingTop="@dimen/photo_padding_top"
+        android:layout_marginTop="@dimen/photo_padding_top"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="284dp"
         android:scaleType="centerCrop"
         android:src="@drawable/firefly_one"
         android:layout_gravity="center_horizontal"/>

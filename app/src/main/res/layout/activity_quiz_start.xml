@@ -8,6 +8,28 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/current_score_padding_uniform"
+        android:layout_marginLeft="@dimen/current_score_padding_uniform"
+        android:layout_marginRight="@dimen/current_score_padding_uniform">
+        <TextView
+            style="@style/StandardTextBoxDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:text="CURRENT SCORE:"/>
+        <TextView
+            android:id="@+id/currentScoreDisplay"
+            style="@style/StandardTextBoxDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:text="000"/>
+    </LinearLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
@@ -20,31 +42,16 @@
         android:id="@+id/navigation_question_tab"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:layout_marginHorizontal="16dp"
         app:nts_active_color="@color/colorAccent"
         app:nts_inactive_color="@color/colorPrimaryDark"
+        app:nts_gravity="top"
         app:nts_color="@color/colorPrimary"
-        app:nts_corners_radius="3dp"
-        app:nts_size="15dp"
+        app:nts_corners_radius="10dp"
+        app:nts_size="16dp"
         app:nts_titles="@array/questions"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginLeft="@dimen/current_score_padding_uniform"
-        android:layout_marginRight="@dimen/current_score_padding_uniform">
-        <TextView
-            style="@style/StandardTextBoxDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CURRENT SCORE:"/>
-        <TextView
-            android:id="@+id/currentScoreDisplay"
-            style="@style/StandardTextBoxDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 0"/>
-    </LinearLayout>
+
 
     <ProgressBar
         android:id="@+id/progressBar"

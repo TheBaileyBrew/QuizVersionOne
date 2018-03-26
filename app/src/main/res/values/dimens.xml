@@ -21,7 +21,7 @@
 
     <dimen name="photo_padding_top">16dp</dimen>
 
-    <dimen name="current_score_padding_uniform">24dp</dimen>
+    <dimen name="current_score_padding_uniform">16dp</dimen>
     <dimen name="current_score_text_size">18sp</dimen>
     <dimen name="toggle_switch_padding">8dp</dimen>
     <dimen name="toggle_switch_text_size">16sp</dimen>
