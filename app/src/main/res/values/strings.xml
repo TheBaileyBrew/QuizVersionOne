@@ -1,4 +1,87 @@
 <resources>
+    <!-- Default String Declarations-->
     <string name="app_name">Firefly Quiz</string>
+    <string name="current_score">CURRENT SCORE:</string>
+    <string name="default_score_start">000</string>
+    <string name="submit_answer">Submit Answer</string>
+    <string name="check_answers">Check Answers</string>
+    <string name="answer_submitted">Answer Submitted</string>
 
+    <!-- All Question Strings-->
+    <string name="question_one">Who is the captain of the Serenity?</string>
+    <string name="question_two">What is the ship classification of the Serenity?</string>
+    <string name="question_three">Which of the following are names of Jayne\'s guns?</string>
+    <string name="question_three_extracredit">Vera is Jayne\'s favorite gun, but what fictional Clint Eastwood character is the model named after?</string>
+    <string name="question_four">What is the name of the show\'s theme song?</string>
+    <string name="question_five">Who sings the show\'s theme song?</string>
+    <string name="question_six">Which of the following are true?</string>
+
+    <!-- Question One Strings-->
+    <string name="q1_a1">Malcolm Reynolds</string>
+    <string name="q1_a2">River Tam</string>
+    <string name="q1_a3">Jayne Cobb</string>
+    <string name="q1_a4">Zoe Washburne</string>
+
+    <!-- Question Two Strings-->
+    <string name="question_two_hint">Enter your answer here..</string>
+
+    <!-- Question Three Strings-->
+    <string name="q3_a1">LUX</string>
+    <string name="q3_a2">SELINA</string>
+    <string name="q3_a3">ANNA</string>
+    <string name="q3_a4">SOPHIA</string>
+    <string name="q3_a5">VERA</string>
+    <string name="q3_a6">LUCY</string>
+    <string name="show_options">Show Options</string>
+    <string name="hide_options">Hide Options</string>
+
+    <!-- Question Three EC Strings-->
+    <string name="extra_credit">Extra Credit:</string>
+    <string name="q3ec_a1">Walt Kowalski</string>
+    <string name="q3ec_a2">Dirty Harry</string>
+    <string name="q3ec_a3">Robert Kincaid</string>
+    <string name="q3ec_a4">William Munny</string>
+
+    <!-- Question Four Strings-->
+    <string name="play">Play</string>
+    <string name="playing">Playing</string>
+    <string name="stop">Stop</string>
+    <string name="q4_a1">Take Me Back</string>
+    <string name="q4_a2">Flight of the Firefly</string>
+    <string name="q4_a3">The Ballad of Serenity</string>
+    <string name="q4_a4">Travelin\' Far</string>
+
+    <!-- Question Five Strings-->
+    <string name="q5_a1">Mark Hummel</string>
+    <string name="q5_a2">R.J. Mischo</string>
+    <string name="q5_a3">Sonny Rhodes</string>
+    <string name="q5_a4">Phil Guy</string>
+
+    <!-- Question Six Strings-->
+    <string name="question_six_hint">Choose all that apply</string>
+    <string name="q6_a1_statement">Joss Whedon took inspiration from a Pulitzer Prize winning novel while creating Firefly.</string>
+    <string name="q6_a2_statement">There were several Star Trek references throughout the season.</string>
+    <string name="q6_a3_statement">Neil Patrick Harris auditioned for the role of Shepard Book.</string>
+    <string name="q6_a4_statement">Zac Efron made his acting debut in Firefly.</string>
+    <string name="q6_a5_statement">Fox aired the Firefly episodes out of order on purpose.</string>
+    <string name="q6_a6_statement">Firefly was only supposed to have a cast of seven instead of nine.</string>
+    <string name="q6_a1_Truth">Whedon took inspiration from Michael Shaara\'s \'The Killer Angels\'.</string>
+    <string name="q6_a2_Truth">There were Star Wars references, not Star Trek. An Imperial Shuttle and a carbonite Han Solo are a few of the references.</string>
+    <string name="q6_a3_Truth">Neil Patrick Harris actually auditioned for the role of Dr. Simon Tam.</string>
+    <string name="q6_a4_Truth">Zac Efron, at age 13 appeared as a young Simon Tam in episode 5 \'Safe\'.</string>
+    <string name="q6_a5_Truth">FOX felt that the pilot episode wasn\'t strong enough, so the network cherrypicked episodes out-of-order.</string>
+    <string name="q6_a6_Truth">There were only supposed to be five characters, but during casting and development, the cast expanded to nine.</string>
+
+    <!-- Final Fragment Strings-->
+    <string name="final_page_string_one">YOU\'VE TAKEN SERENITY ACROSS THE UNIVERSE ...</string>
+    <string name="final_page_string_two">BUT MAKE SURE YOU DIDN\'T MISS ANYTHING FIRST</string>
+    <string name="green_details">If it\'s GREEN, you answered the question</string>
+    <string name="red_details">If it\'s RED, you should probably answer that question..</string>
+    <string name="one">ONE</string>
+    <string name="two">TWO</string>
+    <string name="three">THREE</string>
+    <string name="four">FOUR</string>
+    <string name="five">FIVE</string>
+    <string name="six">SIX</string>
+    <string name="submit_to_social_media">SUBMIT TO SOCIAL MEDIA</string>
 </resources>

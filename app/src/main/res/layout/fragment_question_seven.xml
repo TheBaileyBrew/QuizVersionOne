@@ -7,95 +7,87 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="@dimen/submit_answer_padding_sides"
+        android:layout_marginRight="@dimen/submit_answer_padding_sides"
+        android:layout_marginLeft="@dimen/submit_answer_padding_sides"
         android:gravity="center"
         android:textSize="26sp"
         android:textColor="@color/colorPrimaryDark"
-        android:text="YOU'VE TAKEN SERENITY ACROSS THE UNIVERSE ..."/>
+        android:text="@string/final_page_string_one"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="@dimen/submit_answer_padding_sides"
+        android:layout_marginRight="@dimen/submit_answer_padding_sides"
+        android:layout_marginLeft="@dimen/submit_answer_padding_sides"
+        android:layout_marginBottom="@dimen/submit_answer_padding_sides"
         android:gravity="center"
         android:textSize="26sp"
         android:textColor="@color/colorPrimaryDark"
-        android:text="BUT MAKE SURE YOU DIDN'T MISS ANYTHING FIRST"/>
+        android:text="@string/final_page_string_two"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textStyle="italic"
         android:textColor="@color/colorAccent"
-        android:text="If it's GREEN, you answered the question"/>
+        android:text="@string/green_details"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textStyle="italic"
         android:textColor="@color/incorrectRed"
-        android:text="If it's RED, you should probably answer that question.."/>
+        android:text="@string/red_details"/>
     <GridLayout
-        android:layout_width="240dp"
-        android:layout_height="240dp"
+        android:layout_width="@dimen/grid_view_size"
+        android:layout_height="@dimen/grid_view_size"
         android:layout_gravity="center_horizontal"
         android:rowCount="3"
         android:columnCount="2"
         android:padding="16dp">
         <TextView
             android:id="@+id/final_question_one"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:textSize="22dp"
+            style="@style/final_gridview_display"
+            android:textSize="@dimen/submit_answer_text_size"
             android:textColor="@color/colorPrimaryWhite"
             android:gravity="center_horizontal"
-            android:text="ONE"/>
+            android:text="@string/one"/>
         <TextView
             android:id="@+id/final_question_two"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:textSize="22dp"
+            style="@style/final_gridview_display"
+            android:textSize="@dimen/submit_answer_text_size"
             android:textColor="@color/colorPrimaryWhite"
             android:gravity="center_horizontal"
-            android:text="TWO"/>
+            android:text="@string/two"/>
         <TextView
             android:id="@+id/final_question_three"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:textSize="22dp"
+            style="@style/final_gridview_display"
+            android:textSize="@dimen/submit_answer_text_size"
             android:textColor="@color/colorPrimaryWhite"
             android:gravity="center_horizontal"
-            android:text="THREE"/>
+            android:text="@string/three"/>
         <TextView
             android:id="@+id/final_question_four"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:textSize="22dp"
+            style="@style/final_gridview_display"
+            android:textSize="@dimen/submit_answer_text_size"
             android:textColor="@color/colorPrimaryWhite"
             android:gravity="center_horizontal"
-            android:text="FOUR"/>
+            android:text="@string/four"/>
         <TextView
             android:id="@+id/final_question_five"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:textSize="22dp"
+            style="@style/final_gridview_display"
+            android:textSize="@dimen/submit_answer_text_size"
             android:textColor="@color/colorPrimaryWhite"
             android:gravity="center_horizontal"
-            android:text="FIVE"/>
+            android:text="@string/five"/>
         <TextView
             android:id="@+id/final_question_six"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:textSize="22dp"
+            style="@style/final_gridview_display"
+            android:textSize="@dimen/submit_answer_text_size"
             android:textColor="@color/colorPrimaryWhite"
             android:gravity="center_horizontal"
-            android:text="SIX"/>
+            android:text="@string/six"/>
     </GridLayout>
     <Button
         android:id="@+id/submitScoreToSocialMedia"
@@ -107,5 +99,5 @@
         android:clickable="true"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="22sp"
-        android:text="SUBMIT TO SOCIAL MEDIA"/>
+        android:text="@string/submit_to_social_media"/>
 </LinearLayout>

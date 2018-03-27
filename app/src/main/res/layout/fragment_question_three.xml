@@ -8,7 +8,7 @@
     <ImageView
         android:layout_marginTop="@dimen/photo_padding_top"
         android:layout_width="match_parent"
-        android:layout_height="284dp"
+        android:layout_height="@dimen/imageview_layout_height"
         android:scaleType="centerCrop"
         android:src="@drawable/firefly_one"
         android:layout_gravity="center_horizontal"/>
@@ -17,7 +17,7 @@
         style="@style/QuestionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Which of the following are names of Jayne's guns?"
+        android:text="@string/question_three"
         />
     <LinearLayout
         android:id="@+id/question_three_linear_switch_display"
@@ -29,43 +29,47 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="right"
+            android:gravity="end"
             android:layout_marginLeft="@dimen/submit_answer_padding_sides"
+            android:layout_marginStart="@dimen/submit_answer_padding_sides"
             android:layout_marginRight="@dimen/submit_answer_half_padding_sides"
+            android:layout_marginEnd="@dimen/submit_answer_half_padding_sides"
             android:layout_weight="1">
             <CheckedTextView
                 android:id="@+id/question_three_optionA"
                 style="@style/CheckedTextViewFormatting"
-                android:text="LUX"/>
+                android:text="@string/q3_a1"/>
             <CheckedTextView
                 android:id="@+id/question_three_optionB"
                 style="@style/CheckedTextViewFormatting"
-                android:text="SELINA"/>
+                android:text="@string/q3_a2"/>
             <CheckedTextView
                 android:id="@+id/question_three_optionC"
                 style="@style/CheckedTextViewFormatting"
-                android:text="ANNA"/>
+                android:text="@string/q3_a3"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="left"
-            android:layout_marginLeft="@dimen/submit_answer_half_padding_sides"
-            android:layout_marginRight="@dimen/submit_answer_padding_sides"
+            android:gravity="end"
+            android:layout_marginLeft="@dimen/submit_answer_padding_sides"
+            android:layout_marginStart="@dimen/submit_answer_padding_sides"
+            android:layout_marginRight="@dimen/submit_answer_half_padding_sides"
+            android:layout_marginEnd="@dimen/submit_answer_half_padding_sides"
             android:layout_weight="1">
             <CheckedTextView
                 android:id="@+id/question_three_optionD"
                 style="@style/CheckedTextViewFormatting"
-                android:text="SOPHIA"/>
+                android:text="@string/q3_a4"/>
             <CheckedTextView
                 android:id="@+id/question_three_optionE"
                 style="@style/CheckedTextViewFormatting"
-                android:text="VERA"/>
+                android:text="@string/q3_a5"/>
             <CheckedTextView
                 android:id="@+id/question_three_optionF"
                 style="@style/CheckedTextViewFormatting"
-                android:text="LUCY"/>
+                android:text="@string/q3_a6"/>
         </LinearLayout>
     </LinearLayout>
     <Button
@@ -75,11 +79,12 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/submit_answer_padding_sides"
         android:layout_marginLeft="@dimen/submit_answer_padding_sides"
         android:layout_marginRight="@dimen/submit_answer_padding_sides"
         android:layout_marginTop="@dimen/submit_answer_padding_sides"
         android:textAllCaps="false"
-        android:text="Show Options"
+        android:text="@string/show_options"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/submit_answer_text_small_size"/>
     <Button
@@ -93,7 +98,7 @@
         android:layout_marginLeft="@dimen/submit_answer_padding_sides"
         android:layout_marginRight="@dimen/submit_answer_padding_sides"
         android:textAllCaps="false"
-        android:text="Submit answer"
+        android:text="@string/submit_answer"
         android:textSize="@dimen/submit_answer_text_size"/>
     <TextView
         android:visibility="gone"
@@ -101,14 +106,14 @@
         style="@style/QuestionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Extra Credit:"/>
+        android:text="@string/extra_credit"/>
     <TextView
         android:visibility="gone"
         android:id="@+id/question_three_extra_credit_text"
         style="@style/ExtraCreditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vera is Jayne's favorite gun, but what fictional Clint Eastwood character is the model named after?"/>
+        android:text="@string/question_three_extracredit"/>
     <RadioGroup
         android:visibility="gone"
         android:id="@+id/questionThreeExtraCreditRadioGroup"
@@ -120,25 +125,25 @@
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Walt Kowalski"/>
+            android:text="@string/q3ec_a1"/>
         <RadioButton
             android:id="@+id/question_threeEC_a2"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dirty Harry"/>
+            android:text="@string/q3ec_a2"/>
         <RadioButton
             android:id="@+id/question_threeEC_a3"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Robert Kincaid"/>
+            android:text="@string/q3ec_a3"/>
         <RadioButton
             android:id="@+id/question_threeEC_a4"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="William Munny"/>
+            android:text="@string/q3ec_a4"/>
     </RadioGroup>
     <Button
         android:id="@+id/submit_answer_question_threeEC"
@@ -148,10 +153,11 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/submit_answer_padding_sides"
         android:layout_marginLeft="@dimen/submit_answer_padding_sides"
         android:layout_marginRight="@dimen/submit_answer_padding_sides"
         android:textAllCaps="false"
-        android:text="Submit answer"
+        android:text="@string/submit_answer"
         android:textSize="@dimen/submit_answer_text_size"/>
 
 </LinearLayout>

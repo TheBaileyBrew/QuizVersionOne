@@ -2,43 +2,28 @@ package com.thebaileybrew.firefly.quizversionone;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.media.session.MediaControllerCompat;
-import android.support.v4.media.session.MediaSessionCompat;
-import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatCallback;
-import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.view.ActionMode;
-import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
-
 import com.gigamole.navigationtabstrip.NavigationTabStrip;
-
 import java.util.List;
 import java.util.Vector;
 import static android.view.View.GONE;
@@ -52,8 +37,6 @@ import static android.view.View.VISIBLE;
  */
 
 public class StartQuizActivity extends FragmentActivity {
-    private final static String TAG = "QuizActivity";
-
     //Boolean values for questions answered
     Boolean questionOne;
     Boolean questionTwo;
@@ -138,13 +121,9 @@ public class StartQuizActivity extends FragmentActivity {
     CheckBox questionSixOptionSix;
 
     //Define Layouts
-    LinearLayout questionThreeLinear;
     LinearLayout linearLayoutQuestionThreeChoices;
 
-    //Misc. declarations for animated/transition items
-    private android.support.v4.view.PagerAdapter mPagerAdapter;
     NavigationTabStrip navigationTab;
-    ViewPager pager;
     ProgressBar questionProgress;
 
     //Declaration for items in Fragment Four (Video Playback)
@@ -157,7 +136,6 @@ public class StartQuizActivity extends FragmentActivity {
     String videoPath;
     Uri uriPath;
 
-    //The onCreate method begins the quiz itself and instantiates the ViewPager
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,9 +152,9 @@ public class StartQuizActivity extends FragmentActivity {
         //initialize the progress bar to be called by any FRAGMENT page
         questionProgress = findViewById(R.id.progressBar);
         questionProgress.setMax(3600);
+        //initialize the ViewPager Fragment Adapter
         this.initializePaging();
-
-        //initialize the navigation tab to partner with the ViewPager
+        //set the Navigation Tab to the origin point
         navigationTab = findViewById(R.id.navigation_question_tab);
         navigationTab.setTabIndex(0);
 
@@ -185,7 +163,7 @@ public class StartQuizActivity extends FragmentActivity {
 
     /*
     * The initializePaging method is called to define the ViewPager Fragments
-    * Each fragment is instantiated separately and managed by the PagerAdapter and NavigationTab
+    * Each fragment is instantiated here but managed by the PagerAdapter and NavigationTab
     */
     public void initializePaging() {
         //Creates the record list of fragments in the quiz
@@ -204,10 +182,10 @@ public class StartQuizActivity extends FragmentActivity {
         */
 
         //initialize the ViewPager and set the adapter to use the fragments that are instantiated
-        mPagerAdapter = new com.thebaileybrew.firefly.quizversionone.PagerAdapter(super.getSupportFragmentManager(), fragments);
-        ViewPager pager = (ViewPager) super.findViewById(R.id.viewPager);
+        android.support.v4.view.PagerAdapter mPagerAdapter = new PagerAdapter(super.getSupportFragmentManager(), fragments);
+        ViewPager pager = super.findViewById(R.id.viewPager);
         pager.setOffscreenPageLimit(8);
-        pager.setAdapter(this.mPagerAdapter);
+        pager.setAdapter(mPagerAdapter);
 
         //Adds the OnPageChangeListener to the ViewPager
         pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -215,35 +193,17 @@ public class StartQuizActivity extends FragmentActivity {
                 navigationTab.setTabIndex(position);
                 //Checks for the current position and updates submit buttons if question has been answered
                 switch (position) {
-                    case 0:
-                        //Fragment One
-                        if (questionOne) {
-                        }
+                    case 0://Fragment One
                         break;
-                    case 1:
-                        //Fragment Two
-                        if (questionTwo) {
-                        }
+                    case 1://Fragment Two
                         break;
-                    case 2:
-                        //Fragment Three
-                        if (questionThree) {
-                        }
+                    case 2://Fragment Three
                         break;
-                    case 3:
-                        //Fragment Four
-                        if (questionFour) {
-                        }
+                    case 3://Fragment Four
                         break;
-                    case 4:
-                        //Fragment Five
-                        if (questionFive) {
-                        }
+                    case 4://Fragment Five
                         break;
-                    case 5:
-                        //Fragment Six
-                        if (questionSix) {
-                        }
+                    case 5://Fragment Six
                         break;
                     case 6:
                         //Fragment Seven
@@ -264,7 +224,7 @@ public class StartQuizActivity extends FragmentActivity {
         questionProgress.startAnimation(anim);
 
         //Auto-advance the Page Viewer
-        final ViewPager pager = (ViewPager) super.findViewById(R.id.viewPager);
+        final ViewPager pager = super.findViewById(R.id.viewPager);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -278,7 +238,7 @@ public class StartQuizActivity extends FragmentActivity {
     //This method sets the action taken when the back button is pressed
     @Override
     public void onBackPressed() {
-        final ViewPager pager = (ViewPager)super.findViewById(R.id.viewPager);
+        final ViewPager pager = super.findViewById(R.id.viewPager);
         if (pager.getCurrentItem() == 0) {
             //If current page is the first question the finish() method is called on the activity
             super.onBackPressed();
@@ -310,7 +270,7 @@ public class StartQuizActivity extends FragmentActivity {
         private float from;
         private float to;
         //Initialize the progress bar animation to transition (from - to)
-        public ProgressBarAnimation(ProgressBar progressBar, float from, float to) {
+        ProgressBarAnimation(ProgressBar progressBar, float from, float to) {
             super();
             this.progressBar = progressBar;
             this.from = from;
@@ -381,7 +341,7 @@ public class StartQuizActivity extends FragmentActivity {
 
         //Fade the submit button and set to unclickable
         questionOneSubmit.setClickable(false);
-        questionOneSubmit.setText("Answer Submitted");
+        questionOneSubmit.setText(getResources().getString(R.string.answer_submitted));
         questionOneSubmit.setTextColor(getResources().getColor(R.color.grayFadeD));
 
         /*
@@ -464,7 +424,7 @@ public class StartQuizActivity extends FragmentActivity {
 
         //Fade the submit button and set to unclickable
         questionTwoSubmit.setClickable(false);
-        questionTwoSubmit.setText("Answer Submitted");
+        questionTwoSubmit.setText(getResources().getString(R.string.answer_submitted));
         questionTwoSubmit.setTextColor(getResources().getColor(R.color.grayFadeD));
 
         /*
@@ -494,14 +454,14 @@ public class StartQuizActivity extends FragmentActivity {
         String CheckedTextViewString = showCheckedTextViewsQuestionThree.getText().toString();
 
         //Validates the String value of the Question Three button to show/hide the CheckedTextViews
-        if (CheckedTextViewString == "Show Options") {
+        if (CheckedTextViewString.equals("Show Options")) {
             linearLayoutQuestionThreeChoices.setVisibility(VISIBLE);
             submitChoicesQuestionThree.setVisibility(VISIBLE);
-            showCheckedTextViewsQuestionThree.setText("Hide Options");
+            showCheckedTextViewsQuestionThree.setText(getResources().getString(R.string.hide_options));
         } else {
             linearLayoutQuestionThreeChoices.setVisibility(GONE);
             submitChoicesQuestionThree.setVisibility(GONE);
-            showCheckedTextViewsQuestionThree.setText("Show Options");
+            showCheckedTextViewsQuestionThree.setText(getResources().getString(R.string.show_options));
         }
 
         /*
@@ -789,7 +749,7 @@ public class StartQuizActivity extends FragmentActivity {
                 break;
         }
         //Auto-advance the Page Viewer
-        final ViewPager pager = (ViewPager)super.findViewById(R.id.viewPager);
+        final ViewPager pager = super.findViewById(R.id.viewPager);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -798,7 +758,6 @@ public class StartQuizActivity extends FragmentActivity {
             }
         }, 3000);
     }
-
 
     //Processing Details for FRAGMENT FOUR - onClick Method
     public void onClickSubmitQuestionFour (View view) {
@@ -854,7 +813,7 @@ public class StartQuizActivity extends FragmentActivity {
         }
         //Fade the Submit Button
         questionFourSubmit.setClickable(false);
-        questionFourSubmit.setText("Answer Submitted");
+        questionFourSubmit.setText(getResources().getString(R.string.answer_submitted));
         questionFourSubmit.setTextColor(getResources().getColor(R.color.grayFadeD));
         /*
         Calls the method to update Nav Tab, ViewPager and Progress Bar
@@ -865,7 +824,7 @@ public class StartQuizActivity extends FragmentActivity {
     }
 
     //This method prepares the video in fragment four
-    public String onClickStartThemeVideo(View view) {
+    public String onClickStartThemeVideo(String text) {
         onClickPlay = findViewById(R.id.start_fragment_four_video);
         onClickText = onClickPlay.getText().toString();
         questionFourVideoViewer = findViewById(R.id.video_view_fragment_four);
@@ -885,7 +844,7 @@ public class StartQuizActivity extends FragmentActivity {
     //This method sets the media player for question four
     private void setupMedia() {
         onClickPlay = findViewById(R.id.start_fragment_four_video);
-        onClickPlay.setText("Playing");
+        onClickPlay.setText(getResources().getString(R.string.playing));
         videoPlaying = questionFourVideoViewer.isPlaying();
         questionFourVideoViewer.setMediaController(myVideoController);
         questionFourVideoViewer.setVideoURI(uriPath);
@@ -898,12 +857,11 @@ public class StartQuizActivity extends FragmentActivity {
         onClickStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickPlay.setText("Play");
+                onClickPlay.setText(getResources().getString(R.string.play));
                 questionFourVideoViewer.stopPlayback();
             }
         });
     }
-
 
     //Processing Details for FRAGMENT FIVE - onClick Method
     public void onClickSubmitQuestionFive (View view) {
@@ -955,7 +913,7 @@ public class StartQuizActivity extends FragmentActivity {
 
         //Fade the Submit Button
         questionFiveSubmit.setClickable(false);
-        questionFiveSubmit.setText("Answer Submitted");
+        questionFiveSubmit.setText(R.string.answer_submitted);
         questionFiveSubmit.setTextColor(getResources().getColor(R.color.grayFadeD));
 
         /*
@@ -1028,7 +986,6 @@ public class StartQuizActivity extends FragmentActivity {
             default:
                 break;
         }
-
         //Update the text in the checkboxes to display true vs false and the reasons why
         updateQuestionSixCheckBoxText();
 
@@ -1103,7 +1060,6 @@ public class StartQuizActivity extends FragmentActivity {
                 }
                 break;
         }
-
         //Update the score display and fade the submit button
         displayCurrentScore(currentScore);
 
@@ -1117,18 +1073,19 @@ public class StartQuizActivity extends FragmentActivity {
         questionSixFinalSubmit.setVisibility(VISIBLE);
     }
 
+    //This method updates the text of the checkboxes from fragment six.
     public void updateQuestionSixCheckBoxText() {
-        questionSixOptionOne.setText("Whedon took inspiration from Michael Shaara's 'The Killer Angels'.");
+        questionSixOptionOne.setText(R.string.q6_a1_Truth);
         questionSixOptionOne.setTextColor(getResources().getColor(R.color.colorAccent));
-        questionSixOptionTwo.setText("There were Star Wars references, not Star Trek. An Imperial Shuttle and a carbonite Han Solo are a few of the references.");
+        questionSixOptionTwo.setText(R.string.q6_a2_Truth);
         questionSixOptionTwo.setTextColor(getResources().getColor(R.color.incorrectRed));
-        questionSixOptionThree.setText("Neil Patrick Harris actually auditioned for the role of Dr. Simon Tam.");
+        questionSixOptionThree.setText(R.string.q6_a3_Truth);
         questionSixOptionThree.setTextColor(getResources().getColor(R.color.incorrectRed));
-        questionSixOptionFour.setText("Zac Efron, at age 13 appeared as a young Simon Tam in episode 5 'Safe'.");
+        questionSixOptionFour.setText(R.string.q6_a4_Truth);
         questionSixOptionFour.setTextColor(getResources().getColor(R.color.colorAccent));
-        questionSixOptionFive.setText("FOX felt that the pilot episode wasn't strong enough, so the network cherrypicked episodes out-of-order.");
+        questionSixOptionFive.setText(R.string.q6_a5_Truth);
         questionSixOptionFive.setTextColor(getResources().getColor(R.color.colorAccent));
-        questionSixOptionSix.setText("There were only supposed to be five characters, but during casting and development, the cast expanded to nine.");
+        questionSixOptionSix.setText(R.string.q6_a6_Truth);
         questionSixOptionSix.setTextColor(getResources().getColor(R.color.incorrectRed));
     }
 
@@ -1137,44 +1094,32 @@ public class StartQuizActivity extends FragmentActivity {
         updateViewPagerNavigationAndAnimation();
     }
 
-
-
     //Update and display the current score
     public void displayCurrentScore (int score) {
         TextView currentScoreTV = findViewById(R.id.currentScoreDisplay);
         currentScoreTV.setText(String.valueOf(score));
     }
 
-
+    //Sets OnTabSelectedListeners for the NavigationTab
     public void navigationTabIndexListener () {
         navigationTab.setOnTabStripSelectedIndexListener(new NavigationTabStrip.OnTabStripSelectedIndexListener() {
             @Override
+            //When any of the first tabs are clicked
             public void onStartTabSelected(String title, int index) {
+                ViewPager pager = findViewById(R.id.viewPager);
                 switch (index) {
                     case 0:
-                        onClickQuestionOne();
-                        break;
                     case 1:
-                        onClickQuestionTwo();
-                        break;
                     case 2:
-                        onClickQuestionThree();
-                        break;
                     case 3:
-                        onClickQuestionFour();
-                        break;
                     case 4:
-                        onClickQuestionFive();
-                        break;
                     case 5:
-                        onClickQuestionSix();
-                        break;
-                    case 6:
-                        onClickQuestionSeven();
+                        navigationTab.setTabIndex(index);
+                        pager.setCurrentItem(index,true);
                         break;
                 }
             }
-
+            //When the final tab is clicked
             @Override
             public void onEndTabSelected(String title, int index) {
                 if (index == 6) {
@@ -1192,76 +1137,40 @@ public class StartQuizActivity extends FragmentActivity {
         if (questionOne) {
             questionOneSubmission.setTextColor(getResources().getColor(R.color.colorAccent));
         } else {
-            questionOneSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
-        }
+            questionOneSubmission.setTextColor(getResources().getColor(R.color.incorrectRed)); }
         //Check for question two completion
         questionTwoSubmission = findViewById(R.id.final_question_two);
         if (questionTwo) {
             questionTwoSubmission.setTextColor(getResources().getColor(R.color.colorAccent));
         } else {
-            questionTwoSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
-        }
+            questionTwoSubmission.setTextColor(getResources().getColor(R.color.incorrectRed)); }
         //Check for question three completion
         questionThreeSubmission = findViewById(R.id.final_question_three);
         if (questionThree) {
             questionThreeSubmission.setTextColor(getResources().getColor(R.color.colorAccent));
         } else {
-            questionThreeSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
-        }
+            questionThreeSubmission.setTextColor(getResources().getColor(R.color.incorrectRed)); }
         //Check for question four completion
         questionFourSubmission = findViewById(R.id.final_question_four);
         if (questionFour) {
             questionFourSubmission.setTextColor(getResources().getColor(R.color.colorAccent));
         } else {
-            questionFourSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
-        }
+            questionFourSubmission.setTextColor(getResources().getColor(R.color.incorrectRed)); }
         //Check for question five completion
         questionFiveSubmission = findViewById(R.id.final_question_five);
         if (questionFive) {
             questionFiveSubmission.setTextColor(getResources().getColor(R.color.colorAccent));
         } else {
-            questionFiveSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
-        }
+            questionFiveSubmission.setTextColor(getResources().getColor(R.color.incorrectRed)); }
         //Check for question six completion
         questionSixSubmission = findViewById(R.id.final_question_six);
         if (questionSix) {
             questionSixSubmission.setTextColor(getResources().getColor(R.color.colorAccent));
         } else {
-            questionSixSubmission.setTextColor(getResources().getColor(R.color.incorrectRed));
-        }
+            questionSixSubmission.setTextColor(getResources().getColor(R.color.incorrectRed)); }
     }
 
-    //These methods define the actions taken when the Navigation Tab is clicked
-    public void onClickQuestionOne () {
-        ViewPager pager = findViewById(R.id.viewPager);
-        navigationTab.setTabIndex(0);
-        pager.setCurrentItem(0,true);
-    }
-    public void onClickQuestionTwo () {
-        ViewPager pager = findViewById(R.id.viewPager);
-        navigationTab.setTabIndex(1);
-        pager.setCurrentItem(1,true);
-    }
-    public void onClickQuestionThree () {
-        ViewPager pager = findViewById(R.id.viewPager);
-        navigationTab.setTabIndex(2);
-        pager.setCurrentItem(2,true);
-    }
-    public void onClickQuestionFour () {
-        ViewPager pager = findViewById(R.id.viewPager);
-        navigationTab.setTabIndex(3);
-        pager.setCurrentItem(3,true);
-    }
-    public void onClickQuestionFive () {
-        ViewPager pager = findViewById(R.id.viewPager);
-        navigationTab.setTabIndex(4);
-        pager.setCurrentItem(4,true);
-    }
-    public void onClickQuestionSix () {
-        ViewPager pager = findViewById(R.id.viewPager);
-        navigationTab.setTabIndex(5);
-        pager.setCurrentItem(5,true);
-    }
+    //This method define the actions taken when the final tab in the Navigation Tab is clicked
     public void onClickQuestionSeven () {
         ViewPager pager = findViewById(R.id.viewPager);
         navigationTab.setTabIndex(6);
@@ -1269,7 +1178,7 @@ public class StartQuizActivity extends FragmentActivity {
         questionSubmissionCheck();
     }
 
-    //This method is called at quiz finale, and allows the user to share their scores to Social Media
+    //This method is called at quiz finale, and allows the user to share their scores to Social Media along with App Download Link
     public void onClickSubmitScoreToSocialMedia(View view) {
         String urlLink = String.valueOf(Uri.parse("https://play.google.com/store/apps/details?id=com.thebaileybrew.firefly.quizversionone"));
         String submissionText = "I just finished the Firefly quiz and scored " + currentScore + " points!  #BringBackFireflyJossWhedon -- Download the quiz here! " + urlLink;

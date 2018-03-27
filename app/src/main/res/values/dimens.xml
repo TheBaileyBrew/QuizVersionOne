@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="question_text_size">24sp</dimen>
-    <dimen name="question_text_size_hint">12sp</dimen>
-    <dimen name="question_padding_vertical">8dp</dimen>
-
-    <dimen name="extracredit_text_size">14sp</dimen>
-    <dimen name="extracredit_padding_vertical">6dp</dimen>
-
-    <dimen name="uniform_left_margin_answer_selections">54dp</dimen>
-    <dimen name="radio_button_padding_small">8dp</dimen>
-    <dimen name="radio_button_text_size">16sp</dimen>
-
-    <dimen name="progress_bar_padding">12dp</dimen>
-    <dimen name="progress_bar_side_extra_padding">6dp</dimen>
-
-    <dimen name="submit_answer_text_size">22sp</dimen>
+    <!-- Font Size Declarations (SP) -->
     <dimen name="submit_answer_text_small_size">12sp</dimen>
-    <dimen name="submit_answer_padding_sides">12dp</dimen>
+    <dimen name="question_text_size_hint">12sp</dimen>
+    <dimen name="extracredit_text_size">14sp</dimen>
+    <dimen name="radio_button_text_size">16sp</dimen>
+    <dimen name="submit_answer_text_size">22sp</dimen>
+    <dimen name="question_text_size">24sp</dimen>
+
+    <!-- Margin/Padding Size Declarations (DP) -->
+    <dimen name="extracredit_padding_vertical">6dp</dimen>
+    <dimen name="progress_bar_side_extra_padding">6dp</dimen>
     <dimen name="submit_answer_half_padding_sides">6dp</dimen>
-
-    <dimen name="photo_padding_top">16dp</dimen>
-
-    <dimen name="current_score_padding_uniform">16dp</dimen>
-    <dimen name="current_score_text_size">18sp</dimen>
+    <dimen name="question_padding_vertical">8dp</dimen>
+    <dimen name="radio_button_padding_small">8dp</dimen>
     <dimen name="toggle_switch_padding">8dp</dimen>
+    <dimen name="submit_answer_padding_sides">12dp</dimen>
+    <dimen name="progress_bar_padding">12dp</dimen>
     <dimen name="toggle_switch_text_size">16sp</dimen>
+    <dimen name="photo_padding_top">16dp</dimen>
+    <dimen name="current_score_padding_uniform">16dp</dimen>
+    <dimen name="standard_margin_padding">16dp</dimen>
+    <dimen name="current_score_text_size">18sp</dimen>
+    <dimen name="uniform_left_margin_answer_selections">54dp</dimen>
+
+    <!-- Navigation Tab Unique Declarations-->
+    <dimen name="nts_corner_radius">10dp</dimen>
+    <dimen name="nts_size">16dp</dimen>
+    <dimen name="nts_layout_height">30dp</dimen>
+
+    <!-- Unique Size Declarations-->
+    <dimen name="grid_view_size">240dp</dimen>
+    <dimen name="imageview_layout_height">300dp</dimen>
+
 </resources>

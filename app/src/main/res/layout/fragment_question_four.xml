@@ -19,8 +19,10 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
-                android:text="Play"
+                android:layout_marginHorizontal="@dimen/submit_answer_half_padding_sides"
+                android:layout_marginRight="@dimen/submit_answer_half_padding_sides"
+                android:layout_marginLeft="@dimen/submit_answer_half_padding_sides"
+                android:text="@string/play"
                 android:textColor="#CCCCCC"/>
 
             <Button
@@ -30,8 +32,10 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
-                android:text="Stop"
+                android:layout_marginHorizontal="@dimen/submit_answer_half_padding_sides"
+                android:layout_marginRight="@dimen/submit_answer_half_padding_sides"
+                android:layout_marginLeft="@dimen/submit_answer_half_padding_sides"
+                android:text="@string/stop"
                 android:textColor="#CCCCCC"/>
     </LinearLayout>
     <TextView
@@ -39,36 +43,37 @@
         style="@style/QuestionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="What is the name of the show's theme song?"/>
+        android:text="@string/question_four"/>
     <RadioGroup
         android:id="@+id/questionFourRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/uniform_left_margin_answer_selections">
+        android:layout_marginLeft="@dimen/uniform_left_margin_answer_selections"
+        android:layout_marginStart="@dimen/uniform_left_margin_answer_selections">
         <RadioButton
             android:id="@+id/question_four_a1"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Take Me Back"/>
+            android:text="@string/q4_a1"/>
         <RadioButton
             android:id="@+id/question_four_a2"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Flight of the Firefly"/>
+            android:text="@string/q4_a2"/>
         <RadioButton
             android:id="@+id/question_four_a3"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="The Ballad of Serenity"/>
+            android:text="@string/q4_a3"/>
         <RadioButton
             android:id="@+id/question_four_a4"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Travelin' Far"/>
+            android:text="@string/q4_a4"/>
     </RadioGroup>
     <Button
         android:id="@+id/submit_answer_question_four"
@@ -79,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/submit_answer_padding_sides"
         android:textAllCaps="false"
-        android:text="Submit Answer"
+        android:text="@string/submit_answer"
         android:textSize="@dimen/submit_answer_text_size"/>
 
 </LinearLayout>

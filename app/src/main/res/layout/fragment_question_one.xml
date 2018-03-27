@@ -7,7 +7,7 @@
     <ImageView
         android:paddingTop="@dimen/photo_padding_top"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="@dimen/imageview_layout_height"
         android:scaleType="fitCenter"
         android:src="@drawable/firefly_crew"
         android:layout_gravity="center_horizontal"/>
@@ -16,7 +16,7 @@
         style="@style/QuestionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Who is the captain of the Serenity?"
+        android:text="@string/question_one"
         />
     <RadioGroup
         android:id="@+id/questionOneRadioGroup"
@@ -28,25 +28,25 @@
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Malcolm Reynolds"/>
+            android:text="@string/q1_a1"/>
         <RadioButton
             android:id="@+id/question_one_a2"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="River Tam"/>
+            android:text="@string/q1_a2"/>
         <RadioButton
             android:id="@+id/question_one_a3"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jayne Cobb"/>
+            android:text="@string/q1_a3"/>
         <RadioButton
             android:id="@+id/question_one_a4"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Zoe Washburne"/>
+            android:text="@string/q1_a4"/>
     </RadioGroup>
     <Button
         android:id="@+id/submit_answer_question_one"
@@ -57,6 +57,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/submit_answer_padding_sides"
         android:textAllCaps="false"
-        android:text="Submit Answer"
+        android:text="@string/submit_answer"
         android:textSize="@dimen/submit_answer_text_size"/>
 </LinearLayout>

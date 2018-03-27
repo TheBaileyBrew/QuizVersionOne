@@ -15,10 +15,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
     }
 
     public void onClickDisplayFrontScreenMenu(View view) {
@@ -28,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         animateBackground.setRepeatCount(0);
         backgroundMainImage.startAnimation(animateBackground);
 
+        //Calls for the Quiz Activity
         Intent goToQuizStart = new Intent (this, StartQuizActivity.class);
         startActivity(goToQuizStart);
     }

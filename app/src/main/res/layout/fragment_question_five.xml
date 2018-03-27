@@ -7,7 +7,7 @@
     <ImageView
         android:paddingTop="@dimen/photo_padding_top"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="@dimen/imageview_layout_height"
         android:scaleType="centerInside"
         android:src="@drawable/firefly_cast"
         android:layout_gravity="center_horizontal"/>
@@ -16,7 +16,7 @@
         style="@style/QuestionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Who sings the show's theme song?"/>
+        android:text="@string/question_five"/>
     <RadioGroup
         android:id="@+id/questionFiveRadioGroup"
         android:layout_width="match_parent"
@@ -27,25 +27,25 @@
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mark Hummel"/>
+            android:text="@string/q5_a1"/>
         <RadioButton
             android:id="@+id/question_five_a2"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="R.J. Mischo"/>
+            android:text="@string/q5_a2"/>
         <RadioButton
             android:id="@+id/question_five_a3"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sonny Rhodes"/>
+            android:text="@string/q5_a3"/>
         <RadioButton
             android:id="@+id/question_five_a4"
             android:theme="@style/RadioButtonSelectionOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phil Guy"/>
+            android:text="@string/q5_a4"/>
     </RadioGroup>
     <Button
         android:id="@+id/submit_answer_question_five"
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/submit_answer_padding_sides"
         android:textAllCaps="false"
-        android:text="Submit Answer"
+        android:text="@string/submit_answer"
         android:textSize="@dimen/submit_answer_text_size"/>
 
 
